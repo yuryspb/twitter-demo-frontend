@@ -1,18 +1,28 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Header from "./Header/";
+import BackgroundImage from "./Profile/BackgroundImage";
+import ProfileNav from "./Profile/Nav";
+import ProfileSidebar from "./Profile/Sidebar";
+import ProfileTimeline from "./Profile/Timeline";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header />
+        <BackgroundImage />
+        <ProfileNav />
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-3">
+              <ProfileSidebar />
+            </div>
+            <div className="col-lg-6">
+              <ProfileTimeline />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
