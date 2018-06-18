@@ -20,7 +20,7 @@ const Header = styled.div`
 const HeaderLink = styled.a`
   font-size: 18px;
   line-height: 21px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   text-align: center;
   font-weight: bold;
   color: ${props => (props.active ? "#14171a" : "#1da1f2")};

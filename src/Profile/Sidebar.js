@@ -18,7 +18,7 @@ const UsrName = styled.span`
   line-height: 22px;
   font-weight: bold;
   color: #14171a;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
 `;
 
 const VerifyIcon = styled.img`
@@ -29,13 +29,13 @@ const VerifyIcon = styled.img`
 const Login = styled.span`
   font-size: 14px;
   line-height: 21px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: #697787;
   margin-right: 8px;
 `;
 
 const FollowChk = styled.span`
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   line-height: 12px;
   font-size: 12px;
   color: #697787;
@@ -44,7 +44,7 @@ const FollowChk = styled.span`
 const Descr = styled.p`
   font-size: 14px;
   line-height: 20px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: #14171a;
   margin-top: 12px;
   margin-bottom: 13px;
@@ -57,7 +57,7 @@ const MsgBtn = styled.button`
   color: white;
   font-size: 14px;
   line-height: 14px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: bold;
   text-align: center;
   width: 128px;
@@ -77,7 +77,7 @@ const InfoIcon = styled.img`
 `;
 
 const InfoText = styled.span`
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   line-height: 28px;
   font-size: 14px;
   color: #657786;
@@ -86,7 +86,7 @@ const InfoText = styled.span`
 const InfoLink = styled.a`
   font-size: 14px;
   line-height: 28px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: #1d81c2;
   text-decoration: none;
   cursor: pointer;

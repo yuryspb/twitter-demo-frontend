@@ -23,19 +23,19 @@ const ReplyBlock = styled.div`
 const Title = styled.h2`
   font-size: 15px;
   line-height: 22px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: black;
   margin: 0;
 `;
 const Descr = styled.span`
   font-size: 14px;
   line-height: 21px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: black;
 `;
 const Link = styled.a`
   font-size: 15px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: #97a6b1;
   text-decoration: none;
 `;

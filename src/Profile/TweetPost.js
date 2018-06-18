@@ -41,7 +41,7 @@ const UsrName = styled.span`
   font-size: 15px;
   line-height: 30px;
   font-weight: bold;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: #292f33;
 `;
 
@@ -49,20 +49,20 @@ const Time = styled.span`
   font-size: 13px;
   line-height: 21px;
   font-weight: bold;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: #697787;
 `;
 
 const Text = styled.p`
   line-height: 22px;
   font-size: 16px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: #292f33;
   margin-top: 0;
 `;
 
 const BigText = styled.p`
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   line-height: 30px;
   font-size: 25px;
   font-weight: 200;
@@ -82,7 +82,7 @@ const Action = styled.div`
 const ActionCount = styled.span`
   font-size: 13px;
   line-height: 15px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: ${props => (props.liked ? "#E2264D" : "#667580")};
   font-weight: ${props => (props.liked ? "bold" : "normal")};
 `;
@@ -96,7 +96,7 @@ const ActionBlock = styled.div`
 const Pinned = styled.span`
   font-size: 12px;
   line-height: 14px;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: #707e88;
   margin-bottom: 4px;
   display: block;

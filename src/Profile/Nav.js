@@ -34,7 +34,7 @@ const MenuLink = styled.a`
   text-align: center;
   font-weight: bold;
   color: #707e88;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
 `;
 
 const MenuNumber = styled.span`
@@ -42,7 +42,7 @@ const MenuNumber = styled.span`
   line-height: 21px;
   text-align: center;
   font-weight: bold;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: ${props => (props.active ? "#1da1f2" : "#788a98")};
 `;
 
@@ -54,7 +54,7 @@ const FollowButton = styled.button`
   font-size: 14px;
   line-height: 16px;
   font-weight: bold;
-  font-family: HelveticaNeue, Helvetica;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   color: #1da1f2;
   padding: 9px 27px;
   margin-top: 12px;
@@ -81,8 +81,7 @@ export default () => (
   <Wrap>
     <div className="container">
       <div className="row">
-        <div className="col-lg-3" />
-        <div className="col-lg-4">
+        <div class="col-lg-offset-3 col-lg-4">
           <MenuBlock>
             <MenuTab active>
               <MenuLink>Tweets</MenuLink>
