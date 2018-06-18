@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import moreIcon from "../Ui/moreIcon.png";
 
 const Wrap = styled.div`
@@ -14,21 +15,25 @@ const MenuBlock = styled.div`
   height: 100%;
 `;
 
-const MenuTab = styled.a`
+const MenuTab = styled(NavLink)`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin-top: 10px;
+  text-decoration: none;
   cursor: pointer;
-  border-bottom: ${props => (props.active ? "4px solid #1DA1F2" : "none")};
+
   &:hover {
     border-bottom: 4px solid #1da1f2;
   }
+  &.active {
+    border-bottom: 4px solid #1da1f2;
+    color: #1da1f2;
+  }
 `;
 
-const MenuLink = styled.a`
+const MenuLink = styled.span`
   font-size: 12px;
   line-height: 21px;
   text-align: center;
@@ -83,23 +88,23 @@ export default () => (
       <div className="row">
         <div class="col-lg-offset-3 col-lg-4">
           <MenuBlock>
-            <MenuTab active>
+            <MenuTab to="/EveryInteract">
               <MenuLink>Tweets</MenuLink>
               <MenuNumber active>8,058</MenuNumber>
             </MenuTab>
-            <MenuTab>
+            <MenuTab exact to="/">
               <MenuLink>Following</MenuLink>
               <MenuNumber>721</MenuNumber>
             </MenuTab>
-            <MenuTab>
+            <MenuTab exact to="/">
               <MenuLink>Followers</MenuLink>
               <MenuNumber>1,815</MenuNumber>
             </MenuTab>
-            <MenuTab>
+            <MenuTab exact to="/">
               <MenuLink>Likes</MenuLink>
               <MenuNumber>460</MenuNumber>
             </MenuTab>
-            <MenuTab>
+            <MenuTab exact to="/">
               <MenuLink>Lists</MenuLink>
               <MenuNumber>2</MenuNumber>
             </MenuTab>

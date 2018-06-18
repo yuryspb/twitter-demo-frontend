@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Wrap = styled.div`
@@ -40,19 +40,15 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
-class TweetPreview extends Component {
-  render() {
-    return (
-      <Wrap>
-        <Image src={this.props.image} />
-        <ReplyBlock>
-          <Title>{this.props.title}</Title>
-          <Descr>{this.props.children}</Descr>
-          <Link>{this.props.link}</Link>
-        </ReplyBlock>
-      </Wrap>
-    );
-  }
-}
+const TweetPreview = props => (
+  <Wrap>
+    <Image src={props.image} />
+    <ReplyBlock>
+      <Title>{props.title}</Title>
+      <Descr>{props.children}</Descr>
+      <Link>{props.link}</Link>
+    </ReplyBlock>
+  </Wrap>
+);
 
 export default TweetPreview;

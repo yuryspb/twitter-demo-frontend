@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import Preview from "./TweetPreview";
 import avatar from "./avatar.png";
@@ -115,68 +115,58 @@ const PostedImage = styled.img`
   width: 490px;
 `;
 
-class TweetPost extends Component {
-  render() {
-    return (
-      <Wrap>
-        <Avatar pinned={this.props.pinned}>
-          {this.props.pinned && <Pin src={pinned} />}
-          <AvatarImage src={avatar} />
-        </Avatar>
-        <Post>
-          <div>
-            {this.props.pinned && <Pinned>Pinned Tweet</Pinned>}
-            <UsrName>{this.props.name} </UsrName>
-            <Time>
-              @{this.props.Time} • {this.props.time}
-            </Time>
-          </div>
-          {this.props.bigFont && <BigText>{this.props.children}</BigText>}
-          {!this.props.bigFont && <Text>{this.props.children}</Text>}
-          {this.props.preview && (
-            <Preview
-              image={this.props.preview.image}
-              link={this.props.preview.link}
-              title={this.props.preview.title}
-            >
-              {this.props.preview.description}
-            </Preview>
-          )}
-          {this.props.image && (
-            <ImageBlock>
-              <PostedImage src={this.props.image} />
-            </ImageBlock>
-          )}
-          <ActionBlock>
-            <Action>
-              <Icon src={comments} />
-              <ActionCount>
-                {this.props.comments > 0 && this.props.comments}
-              </ActionCount>
-            </Action>
-            <Action>
-              <Icon src={retweets} />
-              <ActionCount>
-                {this.props.retweets > 0 && this.props.retweets}
-              </ActionCount>
-            </Action>
-            <Action>
-              {this.props.liked ? <Icon src={loves} /> : <Icon src={likes} />}
-              <ActionCount liked={this.props.liked}>
-                {this.props.likes > 0 && this.props.likes}
-              </ActionCount>
-            </Action>
-            <Action>
-              <Icon src={emails} />
-              <ActionCount>
-                {this.props.emails > 0 && this.props.emails}
-              </ActionCount>
-            </Action>
-          </ActionBlock>
-        </Post>
-      </Wrap>
-    );
-  }
-}
+const TweetPost = props => (
+  <Wrap>
+    <Avatar pinned={props.pinned}>
+      {props.pinned && <Pin src={pinned} />}
+      <AvatarImage src={avatar} />
+    </Avatar>
+    <Post>
+      <div>
+        {props.pinned && <Pinned>Pinned Tweet</Pinned>}
+        <UsrName>{props.name} </UsrName>
+        <Time>
+          @{props.Time} • {props.time}
+        </Time>
+      </div>
+      {props.bigFont && <BigText>{props.children}</BigText>}
+      {!props.bigFont && <Text>{props.children}</Text>}
+      {props.preview && (
+        <Preview
+          image={props.preview.image}
+          link={props.preview.link}
+          title={props.preview.title}
+        >
+          {props.preview.description}
+        </Preview>
+      )}
+      {props.image && (
+        <ImageBlock>
+          <PostedImage src={props.image} />
+        </ImageBlock>
+      )}
+      <ActionBlock>
+        <Action>
+          <Icon src={comments} />
+          <ActionCount>{props.comments > 0 && props.comments}</ActionCount>
+        </Action>
+        <Action>
+          <Icon src={retweets} />
+          <ActionCount>{props.retweets > 0 && props.retweets}</ActionCount>
+        </Action>
+        <Action>
+          {props.liked ? <Icon src={loves} /> : <Icon src={likes} />}
+          <ActionCount liked={props.liked}>
+            {props.likes > 0 && props.likes}
+          </ActionCount>
+        </Action>
+        <Action>
+          <Icon src={emails} />
+          <ActionCount>{props.emails > 0 && props.emails}</ActionCount>
+        </Action>
+      </ActionBlock>
+    </Post>
+  </Wrap>
+);
 
 export default TweetPost;
