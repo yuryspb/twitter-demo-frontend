@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Helmet from "react-helmet";
 import Header from "../Header/";
 import BackgroundImage from "./BackgroundImage";
 import ProfileNav from "./Nav";
@@ -9,6 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Helmet title="EveryInteract (@EveryInteract) | Twitter demo" />
         <Header />
         <BackgroundImage />
         <ProfileNav />

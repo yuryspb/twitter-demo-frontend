@@ -6,7 +6,7 @@ import Profile from "./Profile";
 
 const App = props => (
   <div>
-    <Helmet title="EveryInteract (@EveryInteract) | Twitter demo" />
+    <Helmet title="Twitter demo" />
     <BrowserRouter>
       <Switch>
         <Route exact path="/EveryInteract" component={Profile} />
