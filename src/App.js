@@ -8,10 +8,10 @@ const App = props => (
   <div>
     <Helmet title="Twitter demo" />
     <BrowserRouter>
-      <div>
+      <React.Fragment>
         <Route exact path="/EveryInteract" component={Profile} />
         <Redirect exact from="/" to="/EveryInteract" />
-      </div>
+      </React.Fragment>
     </BrowserRouter>
   </div>
 );
