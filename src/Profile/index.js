@@ -5,6 +5,7 @@ import BackgroundImage from "./BackgroundImage";
 import ProfileNav from "./Nav";
 import ProfileInfo from "./SidebarLeft/ProfileInfo";
 import CommonFollowers from "./SidebarLeft/CommonFollowers";
+import MediaBlock from "./SidebarLeft/MediaBlock";
 import ProfileTimeline from "./Timeline";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <div className="col-lg-3">
               <ProfileInfo />
               <CommonFollowers />
+              <MediaBlock />
             </div>
             <div className="col-lg-6">
               <ProfileTimeline />
