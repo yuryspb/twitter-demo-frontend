@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import locationIcon from "../Ui/locationIcon.svg";
-import linkIcon from "../Ui/linkIcon.svg";
-import joinedIcon from "../Ui/joinedIcon.svg";
-import verifyIcon from "../Ui/verifyIcon.svg";
+import locationIcon from "../../Ui/locationIcon.svg";
+import linkIcon from "../../Ui/linkIcon.svg";
+import joinedIcon from "../../Ui/joinedIcon.svg";
+import verifyIcon from "../../Ui/verifyIcon.svg";
 
 const Wrap = styled.div`
   margin-top: 45px;
