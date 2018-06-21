@@ -8,6 +8,7 @@ import CommonFollowers from "./SidebarLeft/CommonFollowers";
 import MediaBlock from "./SidebarLeft/MediaBlock";
 import ProfileTimeline from "./Timeline";
 import FollowSuggestions from "./SidebarRight/FollowSuggestions";
+import Trends from "./SidebarRight/Trends";
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
             </div>
             <div className="col-lg-3">
               <FollowSuggestions />
+              <Trends />
             </div>
           </div>
         </div>
