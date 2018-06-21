@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Preview from "./TweetPreview";
-import avatar from "./avatar.png";
-import comments from "../Ui/commentsIcon.svg";
-import retweets from "../Ui/retweetIcon.svg";
-import loves from "../Ui/lovesClickedIcon.svg";
-import likes from "../Ui/lovesIcon.svg";
-import emails from "../Ui/directMessageIcon.svg";
-import pinned from "../Ui/pinnedIcon.svg";
+import comments from "../../Ui/commentsIcon.svg";
+import retweets from "../../Ui/retweetIcon.svg";
+import loves from "../../Ui/lovesClickedIcon.svg";
+import likes from "../../Ui/lovesIcon.svg";
+import emails from "../../Ui/directMessageIcon.svg";
+import pinned from "../../Ui/pinnedIcon.svg";
+const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
 
 const Wrap = styled.div`
   display: flex;

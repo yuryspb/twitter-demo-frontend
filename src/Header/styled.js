@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import searchbarIcon from "./searchbarIcon.svg";
+import searchbarIcon from "../Ui/searchbarIcon.svg";
 
 export const Wrap = styled.header`
   position: fixed;

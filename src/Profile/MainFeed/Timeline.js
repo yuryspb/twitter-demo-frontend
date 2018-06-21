@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Tweet from "./TweetPost";
-import { Link } from "../styles";
-import tweetPreview2 from "./tweetPreview2.svg";
-import tweetPic from "./tweetPic.png";
+import { Link } from "../../styles";
+const tweetPreview2 = `${process.env.PUBLIC_URL}/media/tweetPreview2.svg`;
+const tweetPic = `${process.env.PUBLIC_URL}/media/tweetPic.png`;
 
 const Wrap = styled.div`
   width: 100%;

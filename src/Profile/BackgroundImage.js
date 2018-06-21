@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import backgroundImage from "./backgroundImage.png";
-import avatar from "./avatar.png";
+const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
+const backgroundImage = `${process.env.PUBLIC_URL}/media//backgroundImage.png`;
 
 const Background = styled.div`
   background: url(${backgroundImage}) no-repeat;

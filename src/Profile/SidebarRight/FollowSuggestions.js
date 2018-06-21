@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import profileImg1 from "./profile1.png";
-import profileImg2 from "./profile2.png";
-import profileImg3 from "./profile3.png";
-import verifyIcon from "../../Ui/verifyIcon.png";
+import verifyIcon from "../../Ui/verifyIcon.svg";
 import closeIcon from "../../Ui/closeIcon.svg";
 import peopleIcon from "../../Ui/peopleIcon.svg";
+const profileImg1 = `${process.env.PUBLIC_URL}/avatars/profile1.png`;
+const profileImg2 = `${process.env.PUBLIC_URL}/avatars/profile2.png`;
+const profileImg3 = `${process.env.PUBLIC_URL}/avatars/profile3.png`;
 
 const Wrap = styled.div`
   background: white;
