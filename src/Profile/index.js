@@ -9,6 +9,7 @@ import MediaBlock from "./SidebarLeft/MediaBlock";
 import ProfileTimeline from "./Timeline";
 import FollowSuggestions from "./SidebarRight/FollowSuggestions";
 import Trends from "./SidebarRight/Trends";
+import Footer from "./SidebarRight/Footer";
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
             <div className="col-lg-3">
               <FollowSuggestions />
               <Trends />
+              <Footer />
             </div>
           </div>
         </div>
