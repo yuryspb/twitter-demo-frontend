@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import moreIcon from "../Ui/moreIcon.png";
+import moreIcon from "../Ui/more-icon.png";
 
 const Wrap = styled.div`
   background: white;

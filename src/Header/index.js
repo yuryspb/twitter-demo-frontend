@@ -11,11 +11,11 @@ import {
   Avatar,
   TweetBtn
 } from "./styled";
-import homeIcon from "../Ui/homeIcon.svg";
-import momentsIcon from "../Ui/momentsIcon.svg";
-import notificationsIcon from "../Ui/notificationsIcon.svg";
-import messagesIcon from "../Ui/messagesIcon.svg";
-import twitterIcon from "../Ui/twitterIcon.svg";
+import homeIcon from "../Ui/home-icon.svg";
+import momentsIcon from "../Ui/moments-icon.svg";
+import notificationsIcon from "../Ui/notifications-icon.svg";
+import messagesIcon from "../Ui/messages-icon.svg";
+import twitterIcon from "../Ui/twitter-icon.svg";
 const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
 
 export default () => (

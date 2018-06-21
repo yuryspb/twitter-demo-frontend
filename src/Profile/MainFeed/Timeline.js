@@ -3,8 +3,8 @@ import styled from "styled-components";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 import Tweet from "./TweetPost";
 import { Link } from "../../styles";
-const tweetPreview2 = `${process.env.PUBLIC_URL}/media/tweetPreview2.svg`;
-const tweetPic = `${process.env.PUBLIC_URL}/media/tweetPic.png`;
+const tweetPreview = `${process.env.PUBLIC_URL}/media/tweet-preview.svg`;
+const tweetPic = `${process.env.PUBLIC_URL}/media/tweet-pic.png`;
 
 const Wrap = styled.div`
   width: 100%;
@@ -33,7 +33,7 @@ const TweetReply = {
   description:
     "We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…",
   link: "vilijamis.com",
-  image: tweetPreview2
+  image: tweetPreview
 };
 
 const strdate = date => distanceInWordsToNow(new Date(date));

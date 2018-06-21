@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import verifyIcon from "../../Ui/verifyIcon.svg";
-import closeIcon from "../../Ui/closeIcon.svg";
-import peopleIcon from "../../Ui/peopleIcon.svg";
+import verifyIcon from "../../Ui/verify-icon.svg";
+import closeIcon from "../../Ui/close-icon.svg";
+import peopleIcon from "../../Ui/people-icon.svg";
 const profileImg1 = `${process.env.PUBLIC_URL}/avatars/profile1.png`;
 const profileImg2 = `${process.env.PUBLIC_URL}/avatars/profile2.png`;
 const profileImg3 = `${process.env.PUBLIC_URL}/avatars/profile3.png`;
