@@ -7,6 +7,7 @@ import ProfileInfo from "./SidebarLeft/ProfileInfo";
 import CommonFollowers from "./SidebarLeft/CommonFollowers";
 import MediaBlock from "./SidebarLeft/MediaBlock";
 import ProfileTimeline from "./Timeline";
+import FollowSuggestions from "./SidebarRight/FollowSuggestions";
 
 class App extends Component {
   render() {
@@ -25,6 +26,9 @@ class App extends Component {
             </div>
             <div className="col-lg-6">
               <ProfileTimeline />
+            </div>
+            <div className="col-lg-3">
+              <FollowSuggestions />
             </div>
           </div>
         </div>
