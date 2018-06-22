@@ -63,10 +63,15 @@ const TrendCount = styled.div`
   color: #718290;
 `;
 
-const Trend = ({ to, count, children }) => (
+const Trend = ({ to, count, children, span }) => (
   <TrendWrap>
     <TrendLink to={to}>{children}</TrendLink>
-    {count && <TrendCount>{count}</TrendCount>}
+    {count && (
+      <TrendCount>
+        {count}
+        {span}
+      </TrendCount>
+    )}
   </TrendWrap>
 );
 
@@ -78,7 +83,7 @@ export default () => (
       <HeaderLink to="/change">Change</HeaderLink>
     </Title>
     <Trend to="/hashtag/BringYourDogToWorkDay">#BringYourDogToWorkDay</Trend>
-    <Trend to="/hashtag/FridayFeeling" count="12.1K Tweets">
+    <Trend to="/hashtag/FridayFeeling" count={12.1} span="K Tweets">
       #FridayFeeling
     </Trend>
     <Trend
@@ -87,13 +92,13 @@ export default () => (
     >
       #BrexitAnniversary
     </Trend>
-    <Trend to="/search?q=HMSQueenElizabeth" count="1,036 Tweets">
+    <Trend to="/search?q=HMSQueenElizabeth" count={1036} span=" Tweets">
       HMS Queen Elizabeth
     </Trend>
-    <Trend to="/search?q=JoeBudden" count="1,036 Tweets">
+    <Trend to="/search?q=JoeBudden" count={1036} span=" Tweets">
       Joe Budden
     </Trend>
-    <Trend to="/search?q=Trident" count="6,136 Tweets">
+    <Trend to="/search?q=Trident" count={6136} span=" Tweets">
       Trident
     </Trend>
   </Wrap>

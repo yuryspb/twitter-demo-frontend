@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import FollowBtn from "../../Ui/FollowButton";
 import verifyIcon from "../../Ui/verify-icon.svg";
 import closeIcon from "../../Ui/close-icon.svg";
 import peopleIcon from "../../Ui/people-icon.svg";
@@ -94,19 +95,9 @@ const VerifyIcon = styled.img`
   height: 16px;
 `;
 
-const FollowBtn = styled.button`
-  box-sizing: border-box;
-  border: 1px solid #1da1f2;
+const FollowButton = styled(FollowBtn)`
   border-radius: 20px;
-  background: white;
-  font-size: 14px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
-  color: #1da1f2;
   padding: 5px 20px;
-  cursor: pointer;
-  &:hover {
-    background: #e8f5fd;
-  }
 `;
 
 const CloseBtn = styled.button`
@@ -140,7 +131,7 @@ const Profile = ({ image, login, verify, name }) => (
         {verify && <VerifyIcon src={verifyIcon} />}
         <ProfileLogin>{login}</ProfileLogin>
       </ProfileTitle>
-      <FollowBtn>Follow</FollowBtn>
+      <FollowButton>Follow</FollowButton>
     </ProfileInfo>
     <CloseBtn />
   </ProfileWrap>
