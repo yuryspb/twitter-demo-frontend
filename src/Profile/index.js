@@ -7,7 +7,7 @@ import ProfileInfo from "./ProfileInfo";
 import CommonFollowers from "./CommonFollowers";
 import MediaBlock from "./MediaBlock";
 import ProfileTimeline from "./MainFeed/Timeline";
-import FollowSuggestions from "./FollowSuggestions/index";
+import FollowSuggestions from "./FollowSuggestions";
 import Trends from "./Trends";
 import Footer from "./Footer";
 

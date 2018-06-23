@@ -38,7 +38,7 @@ const AvatarBlock = styled.div`
   justify-content: space-between;
 `;
 
-const AvatarImg = styled.img`
+const Avatar = styled.img`
   width: 48px;
   height: 48px;
 `;
@@ -51,7 +51,7 @@ const AvatarLink = styled(Link)`
 
 const Follower = ({ to, image }) => (
   <AvatarLink to={to}>
-    <AvatarImg src={image} />
+    <Avatar src={image} />
   </AvatarLink>
 );
 

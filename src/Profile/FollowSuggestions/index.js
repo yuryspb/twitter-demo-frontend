@@ -54,7 +54,7 @@ const PeopleIcon = styled.img`
   margin-right: 5px;
 `;
 
-const FollowSuggestions = () => (
+export default () => (
   <Wrap>
     <Title>
       <Header>Who to follow</Header>
@@ -93,5 +93,3 @@ const FollowSuggestions = () => (
     </FindPeople>
   </Wrap>
 );
-
-export default FollowSuggestions;

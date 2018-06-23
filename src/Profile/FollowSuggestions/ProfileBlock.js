@@ -21,9 +21,9 @@ const Name = styled.span`
   white-space: nowrap;
 `;
 
-const ImgWrap = styled.div``;
+const AvatarWrap = styled.div``;
 
-const Img = styled.img`
+const Avatar = styled.img`
   width: 48px;
   height: 48px;
 `;
@@ -70,9 +70,9 @@ const CloseBtn = styled.button`
 
 const ProfileBlock = props => (
   <Wrap>
-    <ImgWrap>
-      <Img src={props.image} />
-    </ImgWrap>
+    <AvatarWrap>
+      <Avatar src={props.image} />
+    </AvatarWrap>
     <Info>
       <Title>
         <Name>{props.name}</Name>
