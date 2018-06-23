@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import followersIcon from "../../Ui/followers-icon.svg";
+import followersIcon from "../Ui/followers-icon.svg";
 const followerImg1 = `${process.env.PUBLIC_URL}/avatars/follower1.png`;
 const followerImg2 = `${process.env.PUBLIC_URL}/avatars/follower2.png`;
 const followerImg3 = `${process.env.PUBLIC_URL}/avatars/follower3.png`;

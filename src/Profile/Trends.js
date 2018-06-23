@@ -83,7 +83,7 @@ export default () => (
       <HeaderLink to="/change">Change</HeaderLink>
     </Title>
     <Trend to="/hashtag/BringYourDogToWorkDay">#BringYourDogToWorkDay</Trend>
-    <Trend to="/hashtag/FridayFeeling" count={12.1} span="K Tweets">
+    <Trend to="/hashtag/FridayFeeling" count={12100} span=" Tweets">
       #FridayFeeling
     </Trend>
     <Trend

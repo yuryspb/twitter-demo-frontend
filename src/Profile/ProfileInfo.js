@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import locationIcon from "../../Ui/location-icon.svg";
-import linkIcon from "../../Ui/link-icon.svg";
-import joinedIcon from "../../Ui/joined-icon.svg";
-import verifyIcon from "../../Ui/verify-icon.svg";
+import locationIcon from "../Ui/location-icon.svg";
+import linkIcon from "../Ui/link-icon.svg";
+import joinedIcon from "../Ui/joined-icon.svg";
+import verificationIcon from "../Ui/verification-icon.svg";
 
 const Wrap = styled.div`
   margin-top: 45px;
@@ -21,7 +21,7 @@ const UsrName = styled.span`
   font-family: "Helvetica Neue", "Helvetica", sans-serif;
 `;
 
-const VerifyIcon = styled.img`
+const VerificationIcon = styled.img`
   margin-left: 5px;
   margin-top: 1px;
 `;
@@ -96,7 +96,7 @@ export default () => (
   <Wrap>
     <InfoBlock>
       <UsrName>Every Interaction</UsrName>
-      <VerifyIcon src={verifyIcon} />
+      <VerificationIcon src={verificationIcon} />
     </InfoBlock>
     <Login>@EveryInteract</Login>
     <FollowChk>Follows you</FollowChk>

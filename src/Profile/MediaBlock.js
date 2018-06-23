@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import mediaIcon from "../../Ui/media-icon.svg";
+import mediaIcon from "../Ui/media-icon.svg";
 const thumbnail1 = `${process.env.PUBLIC_URL}/media/thumbnail1.png`;
 const thumbnail2 = `${process.env.PUBLIC_URL}/media/thumbnail2.png`;
 const thumbnail3 = `${process.env.PUBLIC_URL}/media/thumbnail3.png`;

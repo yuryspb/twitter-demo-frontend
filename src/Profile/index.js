@@ -3,13 +3,13 @@ import Helmet from "react-helmet";
 import Header from "../Header/";
 import BackgroundImage from "./BackgroundImage";
 import ProfileNav from "./Nav";
-import ProfileInfo from "./SidebarLeft/ProfileInfo";
-import CommonFollowers from "./SidebarLeft/CommonFollowers";
-import MediaBlock from "./SidebarLeft/MediaBlock";
+import ProfileInfo from "./ProfileInfo";
+import CommonFollowers from "./CommonFollowers";
+import MediaBlock from "./MediaBlock";
 import ProfileTimeline from "./MainFeed/Timeline";
-import FollowSuggestions from "./SidebarRight/FollowSuggestions";
-import Trends from "./SidebarRight/Trends";
-import Footer from "./SidebarRight/Footer";
+import FollowSuggestions from "./FollowSuggestions/index";
+import Trends from "./Trends";
+import Footer from "./Footer";
 
 class App extends Component {
   render() {
