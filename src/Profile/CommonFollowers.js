@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import followersIcon from "../Ui/followers-icon.svg";
-const followerImg1 = `${process.env.PUBLIC_URL}/avatars/follower1.png`;
-const followerImg2 = `${process.env.PUBLIC_URL}/avatars/follower2.png`;
-const followerImg3 = `${process.env.PUBLIC_URL}/avatars/follower3.png`;
-const followerImg4 = `${process.env.PUBLIC_URL}/avatars/follower4.png`;
-const followerImg5 = `${process.env.PUBLIC_URL}/avatars/follower5.png`;
-const followerImg6 = `${process.env.PUBLIC_URL}/avatars/follower6.png`;
+const followerImg1 = `${process.env.PUBLIC_URL}/avatars/follower1.jpg`;
+const followerImg2 = `${process.env.PUBLIC_URL}/avatars/follower2.jpg`;
+const followerImg3 = `${process.env.PUBLIC_URL}/avatars/follower3.jpg`;
+const followerImg4 = `${process.env.PUBLIC_URL}/avatars/follower4.jpg`;
+const followerImg5 = `${process.env.PUBLIC_URL}/avatars/follower5.jpg`;
+const followerImg6 = `${process.env.PUBLIC_URL}/avatars/follower6.jpg`;
 
 const Wrap = styled.div`
   margin-top: 20px;

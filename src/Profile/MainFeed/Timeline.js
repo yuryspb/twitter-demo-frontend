@@ -3,8 +3,8 @@ import styled from "styled-components";
 import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 import Tweet from "./TweetPost";
 import { Link } from "../../styles";
-const tweetPreview = `${process.env.PUBLIC_URL}/media/tweet-preview.svg`;
-const tweetPic = `${process.env.PUBLIC_URL}/media/tweet-pic.png`;
+const tweetPreview = `${process.env.PUBLIC_URL}/media/tweet-preview.jpg`;
+const tweetPic = `${process.env.PUBLIC_URL}/media/tweet-pic.jpg`;
 
 const Wrap = styled.div`
   width: 100%;

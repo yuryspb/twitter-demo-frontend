@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import mediaIcon from "../Ui/media-icon.svg";
-const thumbnail1 = `${process.env.PUBLIC_URL}/media/thumbnail1.png`;
-const thumbnail2 = `${process.env.PUBLIC_URL}/media/thumbnail2.png`;
-const thumbnail3 = `${process.env.PUBLIC_URL}/media/thumbnail3.png`;
-const thumbnail4 = `${process.env.PUBLIC_URL}/media/thumbnail4.png`;
-const thumbnail5 = `${process.env.PUBLIC_URL}/media/thumbnail5.png`;
-const thumbnail6 = `${process.env.PUBLIC_URL}/media/thumbnail6.png`;
+const thumbnail1 = `${process.env.PUBLIC_URL}/media/thumbnail1.jpg`;
+const thumbnail2 = `${process.env.PUBLIC_URL}/media/thumbnail2.jpg`;
+const thumbnail3 = `${process.env.PUBLIC_URL}/media/thumbnail3.jpg`;
+const thumbnail4 = `${process.env.PUBLIC_URL}/media/thumbnail4.jpg`;
+const thumbnail5 = `${process.env.PUBLIC_URL}/media/thumbnail5.jpg`;
+const thumbnail6 = `${process.env.PUBLIC_URL}/media/thumbnail6.jpg`;
 
 const Wrap = styled.div`
   margin-top: 30px;
