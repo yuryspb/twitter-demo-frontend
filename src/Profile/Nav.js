@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import moreIcon from "../Ui/moreIcon.png";
+import FollowBtn from "../Ui/FollowButton";
+import moreIcon from "../Ui/more-icon.png";
 
 const Wrap = styled.div`
   background: white;
@@ -51,24 +52,13 @@ const MenuNumber = styled.span`
   color: ${props => (props.active ? "#1da1f2" : "#788a98")};
 `;
 
-const FollowButton = styled.button`
-  box-sizing: border-box;
-  border: 1px solid #1da1f2;
+const FollowButton = styled(FollowBtn)`
   border-radius: 100px;
-  background: white;
-  font-size: 14px;
-  line-height: 16px;
   font-weight: bold;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
-  color: #1da1f2;
   padding: 9px 27px;
   margin-top: 12px;
   margin-bottom: 11px;
   margin-right: 18px;
-  cursor: pointer;
-  &:hover {
-    background: #e8f5fd;
-  }
 `;
 
 const MoreButton = styled.button`

@@ -11,12 +11,12 @@ import {
   Avatar,
   TweetBtn
 } from "./styled";
-import homeIcon from "./homeIcon.svg";
-import momentsIcon from "./momentsIcon.svg";
-import notificationsIcon from "./notificationsIcon.svg";
-import messagesIcon from "./messagesIcon.svg";
-import twitterIcon from "./twitterIcon.svg";
-import avatar from "./avatar.png";
+import homeIcon from "../Ui/home-icon.svg";
+import momentsIcon from "../Ui/moments-icon.svg";
+import notificationsIcon from "../Ui/notifications-icon.svg";
+import messagesIcon from "../Ui/messages-icon.svg";
+import twitterIcon from "../Ui/twitter-icon.svg";
+const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
 
 export default () => (
   <Wrap>

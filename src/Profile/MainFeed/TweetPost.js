@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Preview from "./TweetPreview";
-import avatar from "./avatar.png";
-import comments from "../Ui/commentsIcon.svg";
-import retweets from "../Ui/retweetIcon.svg";
-import loves from "../Ui/lovesClickedIcon.svg";
-import likes from "../Ui/lovesIcon.svg";
-import emails from "../Ui/directMessageIcon.svg";
-import pinned from "../Ui/pinnedIcon.svg";
+import commentsIcon from "../../Ui/comments-icon.svg";
+import retweetsIcon from "../../Ui/retweet-icon.svg";
+import lovesIcon from "../../Ui/loves-clicked-icon.svg";
+import likesIcon from "../../Ui/loves-icon.svg";
+import emailsIcon from "../../Ui/direct-message-icon.svg";
+import pinnedIcon from "../../Ui/pinned-icon.svg";
+const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
 
 const Wrap = styled.div`
   display: flex;
@@ -118,7 +118,7 @@ const PostedImage = styled.img`
 const TweetPost = props => (
   <Wrap>
     <Avatar pinned={props.pinned}>
-      {props.pinned && <Pin src={pinned} />}
+      {props.pinned && <Pin src={pinnedIcon} />}
       <AvatarImage src={avatar} />
     </Avatar>
     <Post>
@@ -147,21 +147,21 @@ const TweetPost = props => (
       )}
       <ActionBlock>
         <Action>
-          <Icon src={comments} />
+          <Icon src={commentsIcon} />
           <ActionCount>{props.comments > 0 && props.comments}</ActionCount>
         </Action>
         <Action>
-          <Icon src={retweets} />
+          <Icon src={retweetsIcon} />
           <ActionCount>{props.retweets > 0 && props.retweets}</ActionCount>
         </Action>
         <Action>
-          {props.liked ? <Icon src={loves} /> : <Icon src={likes} />}
+          {props.liked ? <Icon src={lovesIcon} /> : <Icon src={likesIcon} />}
           <ActionCount liked={props.liked}>
             {props.likes > 0 && props.likes}
           </ActionCount>
         </Action>
         <Action>
-          <Icon src={emails} />
+          <Icon src={emailsIcon} />
           <ActionCount>{props.emails > 0 && props.emails}</ActionCount>
         </Action>
       </ActionBlock>

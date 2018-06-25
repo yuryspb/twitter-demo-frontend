@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 import Tweet from "./TweetPost";
-import { Link } from "../styles";
-import tweetPreview2 from "./tweetPreview2.svg";
-import tweetPic from "./tweetPic.png";
+import { Link } from "../../styles";
+const tweetPreview = `${process.env.PUBLIC_URL}/media/tweet-preview.jpg`;
+const tweetPic = `${process.env.PUBLIC_URL}/media/tweet-pic.jpg`;
 
 const Wrap = styled.div`
   width: 100%;
@@ -32,8 +33,10 @@ const TweetReply = {
   description:
     "We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…",
   link: "vilijamis.com",
-  image: tweetPreview2
+  image: tweetPreview
 };
+
+const strdate = date => distanceInWordsToNow(new Date(date));
 
 export default () => (
   <Wrap>
@@ -45,7 +48,7 @@ export default () => (
     <Tweet
       name="Every Interaction"
       Login="EveryInteract"
-      time="2 Mar 2015"
+      time={strdate("2015, 5, 2")}
       comments={0}
       retweets={17}
       likes={47}
@@ -63,7 +66,7 @@ export default () => (
     <Tweet
       name="Every Interaction"
       Login="EveryInteract"
-      time="23h"
+      time={strdate("2018, 6, 21, 23:07")}
       comments={1}
       retweets={4}
       likes={2}
@@ -76,7 +79,7 @@ export default () => (
     <Tweet
       name="Every Interaction"
       Login="EveryInteract"
-      time="Nov 18"
+      time={strdate("2017, 11, 18")}
       comments={0}
       retweets={0}
       likes={0}
