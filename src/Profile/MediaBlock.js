@@ -38,7 +38,7 @@ const ThumbnailBlock = styled.div`
   justify-content: space-between;
 `;
 
-const ThumbnailImg = styled.img`
+const Thumbnail = styled.img`
   width: 83px;
   height: 83px;
 `;
@@ -49,9 +49,9 @@ const ThumbnailLink = styled(Link)`
   margin-right: 5px;
 `;
 
-const Thumbnail = ({ to, image }) => (
+const ThumbnailPic = ({ to, image }) => (
   <ThumbnailLink to={to}>
-    <ThumbnailImg src={image} />
+    <Thumbnail src={image} />
   </ThumbnailLink>
 );
 
@@ -62,12 +62,12 @@ export default () => (
       <CommonLink to="/EveryInteract/media">522 Photos and videos</CommonLink>
     </CountBlock>
     <ThumbnailBlock>
-      <Thumbnail to="/pic2" image={thumbnail1} />
-      <Thumbnail to="/pic3" image={thumbnail2} />
-      <Thumbnail to="/pic4" image={thumbnail3} />
-      <Thumbnail to="/pic5" image={thumbnail4} />
-      <Thumbnail to="/pic6" image={thumbnail5} />
-      <Thumbnail to="/pic7" image={thumbnail6} />
+      <ThumbnailPic to="/pic2" image={thumbnail1} />
+      <ThumbnailPic to="/pic3" image={thumbnail2} />
+      <ThumbnailPic to="/pic4" image={thumbnail3} />
+      <ThumbnailPic to="/pic5" image={thumbnail4} />
+      <ThumbnailPic to="/pic6" image={thumbnail5} />
+      <ThumbnailPic to="/pic7" image={thumbnail6} />
     </ThumbnailBlock>
   </Wrap>
 );
