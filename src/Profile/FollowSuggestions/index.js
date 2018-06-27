@@ -56,19 +56,22 @@ const users = [
     id: 1,
     name: "AppleInsider",
     login: "@appleinsider",
-    src: `${process.env.PUBLIC_URL}/avatars/profile1.png`
+    src: `${process.env.PUBLIC_URL}/avatars/profile1.png`,
+    verification: false
   },
   {
     id: 2,
     name: "Creode",
     login: "@Creode",
-    src: `${process.env.PUBLIC_URL}/avatars/profile2.png`
+    src: `${process.env.PUBLIC_URL}/avatars/profile2.png`,
+    verification: true
   },
   {
     id: 3,
     name: "Epiphany Search",
     login: "@EpiphanySearch",
-    src: `${process.env.PUBLIC_URL}/avatars/profile3.png`
+    src: `${process.env.PUBLIC_URL}/avatars/profile3.png`,
+    verification: false
   }
 ];
 
@@ -86,9 +89,11 @@ export default () => (
         <ProfileBlock
           key={user.id}
           to={`/${user.name}`}
+          name={user.name}
           login={user.login}
           image={user.src}
-          alt={`avatar ${user.name}`}
+          alt={user.name}
+          verification={user.verification}
         />
       ))}
     </Profiles>

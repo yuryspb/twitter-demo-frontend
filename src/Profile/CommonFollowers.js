@@ -92,7 +92,7 @@ export default () => (
       {followers.map(user => (
         <Follower key={user.id}>
           <AvatarLink to={`/${user.name}`}>
-            <Avatar src={user.src} alt={`avatar ${user.name}`} />
+            <Avatar src={user.src} alt={user.name} />
           </AvatarLink>
         </Follower>
       ))}
