@@ -129,8 +129,8 @@ const TweetPost = props => (
           @{props.Time} • {props.time}
         </Time>
       </div>
-      {props.bigFont && <BigText>{props.children}</BigText>}
-      {!props.bigFont && <Text>{props.children}</Text>}
+      {props.bigFont && <BigText>{props.text}</BigText>}
+      {!props.bigFont && <Text>{props.text}</Text>}
       {props.preview && (
         <Preview
           image={props.preview.image}

@@ -3,9 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ProfileBlock from "./ProfileBlock";
 import peopleIcon from "../../Ui/people-icon.svg";
-const profileImg1 = `${process.env.PUBLIC_URL}/avatars/profile1.png`;
-const profileImg2 = `${process.env.PUBLIC_URL}/avatars/profile2.png`;
-const profileImg3 = `${process.env.PUBLIC_URL}/avatars/profile3.png`;
 
 const Wrap = styled.div`
   background: white;
@@ -54,6 +51,27 @@ const PeopleIcon = styled.img`
   margin-right: 5px;
 `;
 
+const users = [
+  {
+    id: 1,
+    name: "AppleInsider",
+    login: "@appleinsider",
+    src: `${process.env.PUBLIC_URL}/avatars/profile1.png`
+  },
+  {
+    id: 2,
+    name: "Creode",
+    login: "@Creode",
+    src: `${process.env.PUBLIC_URL}/avatars/profile2.png`
+  },
+  {
+    id: 3,
+    name: "Epiphany Search",
+    login: "@EpiphanySearch",
+    src: `${process.env.PUBLIC_URL}/avatars/profile3.png`
+  }
+];
+
 export default () => (
   <Wrap>
     <Title>
@@ -64,28 +82,15 @@ export default () => (
       <HeaderLink to="/who_to_follow/suggestions">View all</HeaderLink>
     </Title>
     <Profiles>
-      <ProfileBlock
-        image={profileImg1}
-        name="AppleInsider"
-        login="@appleinsider"
-      >
-        AppleInsider
-      </ProfileBlock>
-      <ProfileBlock
-        image={profileImg2}
-        name="Creode"
-        login="@Creode"
-        verification={true}
-      >
-        Creode
-      </ProfileBlock>
-      <ProfileBlock
-        image={profileImg3}
-        name="Epiphany Search"
-        login="@EpiphanySearch"
-      >
-        Epiphany Search
-      </ProfileBlock>
+      {users.map(user => (
+        <ProfileBlock
+          key={user.id}
+          to={`/${user.name}`}
+          login={user.login}
+          image={user.src}
+          alt={`avatar ${user.name}`}
+        />
+      ))}
     </Profiles>
     <FindPeople>
       <PeopleIcon src={peopleIcon} />
