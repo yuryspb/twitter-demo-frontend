@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export default styled.button`
   box-sizing: border-box;
@@ -6,7 +6,7 @@ export default styled.button`
   background: white;
   font-size: 14px;
   line-height: 16px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #1da1f2;
   cursor: pointer;
   &:hover {

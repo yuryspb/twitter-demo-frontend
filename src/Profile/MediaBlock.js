@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import mediaIcon from "../Ui/media-icon.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import mediaIcon from '../Ui/media-icon.svg';
 
 const Wrap = styled.div`
   margin-top: 30px;
@@ -20,7 +20,7 @@ const Icon = styled.img`
 const CommonLink = styled(Link)`
   font-size: 14px;
   line-height: 16px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #1da1f2;
   text-decoration: none;
 `;
@@ -52,50 +52,47 @@ const ThumbnailPic = ({ to, image }) => (
 const media = [
   {
     id: 1,
-    name: "pic2",
-    src: `${process.env.PUBLIC_URL}/media/thumbnail1.jpg`
+    name: 'pic2',
+    src: `${process.env.PUBLIC_URL}/media/thumbnail1.jpg`,
   },
   {
     id: 2,
-    name: "pic3",
-    src: `${process.env.PUBLIC_URL}/media/thumbnail2.jpg`
+    name: 'pic3',
+    src: `${process.env.PUBLIC_URL}/media/thumbnail2.jpg`,
   },
   {
     id: 3,
-    name: "pic4",
-    src: `${process.env.PUBLIC_URL}/media/thumbnail3.jpg`
+    name: 'pic4',
+    src: `${process.env.PUBLIC_URL}/media/thumbnail3.jpg`,
   },
   {
     id: 4,
-    name: "pic5",
-    src: `${process.env.PUBLIC_URL}/media/thumbnail4.jpg`
+    name: 'pic5',
+    src: `${process.env.PUBLIC_URL}/media/thumbnail4.jpg`,
   },
   {
     id: 5,
-    name: "pic6",
-    src: `${process.env.PUBLIC_URL}/media/thumbnail5.jpg`
+    name: 'pic6',
+    src: `${process.env.PUBLIC_URL}/media/thumbnail5.jpg`,
   },
   {
     id: 6,
-    name: "pic7",
-    src: `${process.env.PUBLIC_URL}/media/thumbnail6.jpg`
-  }
+    name: 'pic7',
+    src: `${process.env.PUBLIC_URL}/media/thumbnail6.jpg`,
+  },
 ];
 
 export default () => (
   <Wrap>
     <CountBlock>
       <Icon src={mediaIcon} />
-      <CommonLink to="/EveryInteract/media">522 Photos and videos</CommonLink>
+      <CommonLink to="/EveryInteract/media">
+522 Photos and videos
+      </CommonLink>
     </CountBlock>
     <ThumbnailBlock>
       {media.map(pic => (
-        <ThumbnailPic
-          key={pic.id}
-          to={`/${pic.name}`}
-          image={pic.src}
-          alt={pic.name}
-        />
+        <ThumbnailPic key={pic.id} to={`/${pic.name}`} image={pic.src} alt={pic.name} />
       ))}
     </ThumbnailBlock>
   </Wrap>

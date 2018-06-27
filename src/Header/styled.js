@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import searchbarIcon from "../Ui/searchbar-icon.svg";
+import styled from 'styled-components';
+import searchbarIcon from '../Ui/searchbar-icon.svg';
 
 export const Wrap = styled.header`
   position: fixed;
@@ -28,7 +28,7 @@ export const NavLink = styled.a`
   line-height: 15px;
   font-weight: bold;
   color: #667580;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   text-decoration: none;
   cursor: pointer;
 `;
@@ -55,7 +55,7 @@ export const SearchInput = styled.input`
   background: #f5f8fa;
   border: 1px solid #e6ecf0;
   border-radius: 100px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   font-size: 12px;
   line-height: 14px;
   color: #687b8a;
@@ -83,7 +83,7 @@ export const TweetBtn = styled.button`
   text-align: center;
   line-height: 14px;
   font-size: 14px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #ffffff;
   background: #1da1f2;
   border-radius: 100px;

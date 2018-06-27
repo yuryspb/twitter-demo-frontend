@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+
 const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
 const backgroundImage = `${process.env.PUBLIC_URL}/media//background-image.jpg`;
 

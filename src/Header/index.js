@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Wrap,
   Navigation,
@@ -9,13 +9,14 @@ import {
   SearchBlock,
   SearchInput,
   Avatar,
-  TweetBtn
-} from "./styled";
-import homeIcon from "../Ui/home-icon.svg";
-import momentsIcon from "../Ui/moments-icon.svg";
-import notificationsIcon from "../Ui/notifications-icon.svg";
-import messagesIcon from "../Ui/messages-icon.svg";
-import twitterIcon from "../Ui/twitter-icon.svg";
+  TweetBtn,
+} from './styled';
+import homeIcon from '../Ui/home-icon.svg';
+import momentsIcon from '../Ui/moments-icon.svg';
+import notificationsIcon from '../Ui/notifications-icon.svg';
+import messagesIcon from '../Ui/messages-icon.svg';
+import twitterIcon from '../Ui/twitter-icon.svg';
+
 const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
 
 export default () => (
@@ -26,19 +27,27 @@ export default () => (
           <Navigation>
             <NavLinkBlock>
               <NavIcon src={homeIcon} alt="" />
-              <NavLink>Home</NavLink>
+              <NavLink>
+Home
+              </NavLink>
             </NavLinkBlock>
             <NavLinkBlock>
               <NavIcon src={momentsIcon} alt="" />
-              <NavLink>Moments</NavLink>
+              <NavLink>
+Moments
+              </NavLink>
             </NavLinkBlock>
             <NavLinkBlock>
               <NavIcon src={notificationsIcon} alt="" />
-              <NavLink>Notifications</NavLink>
+              <NavLink>
+Notifications
+              </NavLink>
             </NavLinkBlock>
             <NavLinkBlock>
               <NavIcon src={messagesIcon} alt="" />
-              <NavLink>Messages</NavLink>
+              <NavLink>
+Messages
+              </NavLink>
             </NavLinkBlock>
           </Navigation>
         </div>
@@ -49,7 +58,9 @@ export default () => (
           <SearchBlock>
             <SearchInput placeholder="Search Twitter" />
             <Avatar src={avatar} />
-            <TweetBtn>Tweet</TweetBtn>
+            <TweetBtn>
+Tweet
+            </TweetBtn>
           </SearchBlock>
         </div>
       </div>

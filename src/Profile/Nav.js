@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import FollowBtn from "../Ui/FollowButton";
-import moreIcon from "../Ui/more-icon.png";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import FollowBtn from '../Ui/FollowButton';
+import moreIcon from '../Ui/more-icon.png';
 
 const Wrap = styled.div`
   background: white;
@@ -40,7 +40,7 @@ const MenuLink = styled.span`
   text-align: center;
   font-weight: bold;
   color: #707e88;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
 `;
 
 const MenuNumber = styled.span`
@@ -48,8 +48,8 @@ const MenuNumber = styled.span`
   line-height: 21px;
   text-align: center;
   font-weight: bold;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
-  color: ${props => (props.active ? "#1da1f2" : "#788a98")};
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  color: ${({ active }) => (active ? '#1da1f2' : '#788a98')};
 `;
 
 const FollowButton = styled(FollowBtn)`
@@ -76,32 +76,54 @@ export default () => (
   <Wrap>
     <div className="container">
       <div className="row">
-        <div class="col-lg-offset-3 col-lg-4">
+        <div className="col-lg-offset-3 col-lg-4">
           <MenuBlock>
             <MenuTab to="/EveryInteract">
-              <MenuLink>Tweets</MenuLink>
-              <MenuNumber active>8,058</MenuNumber>
+              <MenuLink>
+Tweets
+              </MenuLink>
+              <MenuNumber active>
+8,058
+              </MenuNumber>
             </MenuTab>
             <MenuTab exact to="/">
-              <MenuLink>Following</MenuLink>
-              <MenuNumber>721</MenuNumber>
+              <MenuLink>
+Following
+              </MenuLink>
+              <MenuNumber>
+721
+              </MenuNumber>
             </MenuTab>
             <MenuTab exact to="/">
-              <MenuLink>Followers</MenuLink>
-              <MenuNumber>1,815</MenuNumber>
+              <MenuLink>
+Followers
+              </MenuLink>
+              <MenuNumber>
+1,815
+              </MenuNumber>
             </MenuTab>
             <MenuTab exact to="/">
-              <MenuLink>Likes</MenuLink>
-              <MenuNumber>460</MenuNumber>
+              <MenuLink>
+Likes
+              </MenuLink>
+              <MenuNumber>
+460
+              </MenuNumber>
             </MenuTab>
             <MenuTab exact to="/">
-              <MenuLink>Lists</MenuLink>
-              <MenuNumber>2</MenuNumber>
+              <MenuLink>
+Lists
+              </MenuLink>
+              <MenuNumber>
+2
+              </MenuNumber>
             </MenuTab>
           </MenuBlock>
         </div>
         <div className="col-lg-5 end-lg">
-          <FollowButton>Follow</FollowButton>
+          <FollowButton>
+Follow
+          </FollowButton>
           <MoreButton />
         </div>
       </div>

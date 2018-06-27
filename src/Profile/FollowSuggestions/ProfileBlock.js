@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import FollowBtn from "../../Ui/FollowButton";
-import verificationIcon from "../../Ui/verification-icon.svg";
-import closeIcon from "../../Ui/close-icon.svg";
+import React from 'react';
+import styled from 'styled-components';
+import FollowBtn from '../../Ui/FollowButton';
+import verificationIcon from '../../Ui/verification-icon.svg';
+import closeIcon from '../../Ui/close-icon.svg';
 
 const Wrap = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const Wrap = styled.div`
 const Name = styled.span`
   font-size: 13px;
   line-height: 15px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: bold;
   color: #292f33;
   margin-right: 3px;
@@ -42,7 +42,7 @@ const Title = styled.div`
 const Login = styled.span`
   font-size: 13px;
   line-height: 15px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #657786;
   margin-left: 3px;
   overflow: hidden;
@@ -68,21 +68,33 @@ const CloseBtn = styled.button`
   cursor: pointer;
 `;
 
-const ProfileBlock = props => (
-  <Wrap>
-    <AvatarWrap>
-      <Avatar src={props.image} />
-    </AvatarWrap>
-    <Info>
-      <Title>
-        <Name>{props.name}</Name>
-        {props.verification && <VerificationIcon src={verificationIcon} />}
-        <Login>{props.login}</Login>
-      </Title>
-      <FollowButton>Follow</FollowButton>
-    </Info>
-    <CloseBtn />
-  </Wrap>
-);
+const ProfileBlock = (props) => {
+  const {
+    image, name, verification, login,
+  } = props;
+
+  return (
+    <Wrap>
+      <AvatarWrap>
+        <Avatar src={image} />
+      </AvatarWrap>
+      <Info>
+        <Title>
+          <Name>
+            {name}
+          </Name>
+          {verification && <VerificationIcon src={verificationIcon} />}
+          <Login>
+            {login}
+          </Login>
+        </Title>
+        <FollowButton>
+Follow
+        </FollowButton>
+      </Info>
+      <CloseBtn />
+    </Wrap>
+  );
+};
 
 export default ProfileBlock;
