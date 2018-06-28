@@ -1,10 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import {
   Wrap,
   Navigation,
   NavLinkBlock,
   NavIcon,
-  NavLink,
   MainIcon,
   SearchBlock,
   SearchInput,
@@ -17,6 +18,16 @@ import notificationsIcon from '../Ui/notifications-icon.svg';
 import messagesIcon from '../Ui/messages-icon.svg';
 import twitterIcon from '../Ui/twitter-icon.svg';
 
+const NavLink = styled(Link)`
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: bold;
+  color: #667580;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+`;
+
 const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
 
 export default () => (
@@ -27,32 +38,34 @@ export default () => (
           <Navigation>
             <NavLinkBlock>
               <NavIcon src={homeIcon} alt="" />
-              <NavLink>
-Home
+              <NavLink exact to="/">
+                Home
               </NavLink>
             </NavLinkBlock>
             <NavLinkBlock>
               <NavIcon src={momentsIcon} alt="" />
-              <NavLink>
-Moments
+              <NavLink exact to="/moments">
+                Moments
               </NavLink>
             </NavLinkBlock>
             <NavLinkBlock>
               <NavIcon src={notificationsIcon} alt="" />
-              <NavLink>
-Notifications
+              <NavLink exact to="/notifications">
+                Notifications
               </NavLink>
             </NavLinkBlock>
             <NavLinkBlock>
               <NavIcon src={messagesIcon} alt="" />
-              <NavLink>
-Messages
+              <NavLink exact to="/messages">
+                Messages
               </NavLink>
             </NavLinkBlock>
           </Navigation>
         </div>
         <div className="col-lg-2">
-          <MainIcon src={twitterIcon} />
+          <MainIcon to="/">
+            <img src={twitterIcon} alt="" />
+          </MainIcon>
         </div>
         <div className="col-lg-5">
           <SearchBlock>

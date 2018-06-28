@@ -113,7 +113,7 @@ View all
     </Profiles>
     <FindPeople>
       <PeopleIcon src={peopleIcon} />
-      <HeaderLink to="/find">
+      <HeaderLink to="/who_to_follow/import">
 Find people you know
       </HeaderLink>
     </FindPeople>

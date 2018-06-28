@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import Tweet from './TweetPost';
 
@@ -17,7 +18,7 @@ const Header = styled.div`
   padding-left: 16px;
 `;
 
-const HeaderLink = styled.a`
+const HeaderLink = styled(NavLink)`
   font-size: 18px;
   line-height: 21px;
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
@@ -25,6 +26,12 @@ const HeaderLink = styled.a`
   font-weight: bold;
   color: ${({ active }) => (active ? '#14171a' : '#1da1f2')};
   margin-right: 34px;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    border-bottom: 1px solid #1da1f2;
+  }
 `;
 
 const TweetReply = {
@@ -92,14 +99,14 @@ const strdate = date => distanceInWordsToNow(new Date(date));
 export default () => (
   <Wrap>
     <Header>
-      <HeaderLink active>
-Tweets
+      <HeaderLink exact to="/" active>
+        Tweets
       </HeaderLink>
-      <HeaderLink>
-Tweets & replies
+      <HeaderLink exact to="/with_replies">
+        Tweets & replies
       </HeaderLink>
-      <HeaderLink>
-Media
+      <HeaderLink exact to="/media">
+        Media
       </HeaderLink>
     </Header>
 

@@ -31,8 +31,8 @@ export default () => (
     <Copyright>
 © 2018 Twitter
     </Copyright>
-    <Nav to="/about">
-About
+    <Nav to="/about" exact>
+      About
     </Nav>
     <Nav to="/support">
 Help Center

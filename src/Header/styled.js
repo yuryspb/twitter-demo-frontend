@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import searchbarIcon from '../Ui/searchbar-icon.svg';
 
 export const Wrap = styled.header`
@@ -23,23 +24,15 @@ export const NavLinkBlock = styled.div`
   align-items: center;
 `;
 
-export const NavLink = styled.a`
-  font-size: 13px;
-  line-height: 15px;
-  font-weight: bold;
-  color: #667580;
-  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
-  text-decoration: none;
-  cursor: pointer;
-`;
-
 export const NavIcon = styled.img`
   margin-right: 5px;
   cursor: pointer;
 `;
 
-export const MainIcon = styled.img`
-  margin-left: 30px;
+export const MainIcon = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 16px;
   cursor: pointer;
 `;

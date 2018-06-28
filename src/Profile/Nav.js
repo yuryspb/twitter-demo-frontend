@@ -86,7 +86,7 @@ Tweets
 8,058
               </MenuNumber>
             </MenuTab>
-            <MenuTab exact to="/">
+            <MenuTab exact to="/following">
               <MenuLink>
 Following
               </MenuLink>
@@ -94,7 +94,7 @@ Following
 721
               </MenuNumber>
             </MenuTab>
-            <MenuTab exact to="/">
+            <MenuTab exact to="/followers">
               <MenuLink>
 Followers
               </MenuLink>
@@ -102,7 +102,7 @@ Followers
 1,815
               </MenuNumber>
             </MenuTab>
-            <MenuTab exact to="/">
+            <MenuTab exact to="/likes">
               <MenuLink>
 Likes
               </MenuLink>
@@ -110,7 +110,7 @@ Likes
 460
               </MenuNumber>
             </MenuTab>
-            <MenuTab exact to="/">
+            <MenuTab exact to="/lists">
               <MenuLink>
 Lists
               </MenuLink>
