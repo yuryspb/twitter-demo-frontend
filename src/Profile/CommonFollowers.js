@@ -7,7 +7,7 @@ const Wrap = styled.div`
   margin-top: 20px;
 `;
 
-const CountBlock = styled.div`
+const Count = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 8px;
@@ -25,7 +25,7 @@ const CommonLink = styled(Link)`
   text-decoration: none;
 `;
 
-const AvatarBlock = styled.div`
+const Avatars = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -82,13 +82,11 @@ const followers = [
 
 export default () => (
   <Wrap>
-    <CountBlock>
+    <Count>
       <Icon src={followersIcon} />
-      <CommonLink to="/EveryInteract/followers_you_follow">
-6 Followers you know
-      </CommonLink>
-    </CountBlock>
-    <AvatarBlock>
+      <CommonLink to="/EveryInteract/followers_you_follow">6 Followers you know</CommonLink>
+    </Count>
+    <Avatars>
       {followers.map(user => (
         <Follower key={user.id}>
           <AvatarLink to={`/${user.name}`}>
@@ -96,6 +94,6 @@ export default () => (
           </AvatarLink>
         </Follower>
       ))}
-    </AvatarBlock>
+    </Avatars>
   </Wrap>
 );

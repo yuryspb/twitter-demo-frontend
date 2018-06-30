@@ -9,11 +9,11 @@ const Wrap = styled.div`
   margin-top: 45px;
 `;
 
-const InfoBlock = styled.div`
+const Info = styled.div`
   display: flex;
 `;
 
-const UsrName = styled.span`
+const UserName = styled.span`
   font-size: 22px;
   line-height: 22px;
   font-weight: bold;
@@ -34,14 +34,14 @@ const Login = styled.span`
   margin-right: 8px;
 `;
 
-const FollowChk = styled.span`
+const FollowCheck = styled.span`
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   line-height: 12px;
   font-size: 12px;
   color: #697787;
 `;
 
-const Descr = styled.p`
+const Description = styled.p`
   font-size: 14px;
   line-height: 20px;
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
@@ -50,7 +50,7 @@ const Descr = styled.p`
   margin-bottom: 13px;
 `;
 
-const MsgBtn = styled.button`
+const MessageButton = styled.button`
   background: #1da1f2;
   border-radius: 100px;
   border: none;
@@ -94,52 +94,36 @@ const InfoLink = styled.a`
 
 export default () => (
   <Wrap>
-    <InfoBlock>
-      <UsrName>
-Every Interaction
-      </UsrName>
+    <Info>
+      <UserName>Every Interaction</UserName>
       <VerificationIcon src={verificationIcon} />
-    </InfoBlock>
-    <Login>
-@EveryInteract
-    </Login>
-    <FollowChk>
-Follows you
-    </FollowChk>
-    <Descr>
+    </Info>
+    <Login>@EveryInteract</Login>
+    <FollowCheck>Follows you</FollowCheck>
+    <Description>
       UX Design studio focused problem
       <br />
       solving creativity. Design to us is how
       <br />
       can we make things *work* amazing.
-    </Descr>
+    </Description>
     <div>
-      <InfoBlock>
+      <Info>
         <InfoIcon src={locationIcon} />
-        <InfoText>
-London, UK
-        </InfoText>
-      </InfoBlock>
-      <InfoBlock>
+        <InfoText>London, UK</InfoText>
+      </Info>
+      <Info>
         <InfoIcon src={linkIcon} />
-        <InfoLink>
-everyinteraction.com
-        </InfoLink>
-      </InfoBlock>
-      <InfoBlock>
+        <InfoLink>everyinteraction.com</InfoLink>
+      </Info>
+      <Info>
         <InfoIcon src={joinedIcon} />
-        <InfoText>
-Joined May 2008
-        </InfoText>
-      </InfoBlock>
+        <InfoText>Joined May 2008</InfoText>
+      </Info>
     </div>
     <ButtonBlock>
-      <MsgBtn>
-Tweet to
-      </MsgBtn>
-      <MsgBtn>
-Message
-      </MsgBtn>
+      <MessageButton>Tweet to</MessageButton>
+      <MessageButton>Message</MessageButton>
     </ButtonBlock>
   </Wrap>
 );

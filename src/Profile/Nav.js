@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import FollowBtn from '../Ui/FollowButton';
+import Button from '../Ui/FollowButton';
 import moreIcon from '../Ui/more-icon.png';
 
 const Wrap = styled.div`
@@ -9,7 +9,7 @@ const Wrap = styled.div`
   box-shadow: 0px 2px 2px #b0b8be;
 `;
 
-const MenuBlock = styled.div`
+const Menu = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -52,7 +52,7 @@ const MenuNumber = styled.span`
   color: ${({ active }) => (active ? '#1da1f2' : '#788a98')};
 `;
 
-const FollowButton = styled(FollowBtn)`
+const FollowButton = styled(Button)`
   border-radius: 100px;
   font-weight: bold;
   padding: 9px 27px;
@@ -77,53 +77,31 @@ export default () => (
     <div className="container">
       <div className="row">
         <div className="col-lg-offset-3 col-lg-4">
-          <MenuBlock>
+          <Menu>
             <MenuTab to="/EveryInteract">
-              <MenuLink>
-Tweets
-              </MenuLink>
-              <MenuNumber active>
-8,058
-              </MenuNumber>
+              <MenuLink>Tweets</MenuLink>
+              <MenuNumber active>8,058</MenuNumber>
             </MenuTab>
             <MenuTab exact to="/following">
-              <MenuLink>
-Following
-              </MenuLink>
-              <MenuNumber>
-721
-              </MenuNumber>
+              <MenuLink>Following</MenuLink>
+              <MenuNumber>721</MenuNumber>
             </MenuTab>
             <MenuTab exact to="/followers">
-              <MenuLink>
-Followers
-              </MenuLink>
-              <MenuNumber>
-1,815
-              </MenuNumber>
+              <MenuLink>Followers</MenuLink>
+              <MenuNumber>1,815</MenuNumber>
             </MenuTab>
             <MenuTab exact to="/likes">
-              <MenuLink>
-Likes
-              </MenuLink>
-              <MenuNumber>
-460
-              </MenuNumber>
+              <MenuLink>Likes</MenuLink>
+              <MenuNumber>460</MenuNumber>
             </MenuTab>
             <MenuTab exact to="/lists">
-              <MenuLink>
-Lists
-              </MenuLink>
-              <MenuNumber>
-2
-              </MenuNumber>
+              <MenuLink>Lists</MenuLink>
+              <MenuNumber>2</MenuNumber>
             </MenuTab>
-          </MenuBlock>
+          </Menu>
         </div>
         <div className="col-lg-5 end-lg">
-          <FollowButton>
-Follow
-          </FollowButton>
+          <FollowButton>Follow</FollowButton>
           <MoreButton />
         </div>
       </div>

@@ -28,27 +28,14 @@ const Nav = styled(Link)`
 
 export default () => (
   <Footer>
-    <Copyright>
-© 2018 Twitter
-    </Copyright>
+    <Copyright>© 2018 Twitter</Copyright>
     <Nav to="/about" exact>
       About
     </Nav>
-    <Nav to="/support">
-Help Center
-    </Nav>
-    <Nav to="/tos">
-Terms
-    </Nav>
-    <Nav to="/privacy">
-Privacy policy
-      {' '}
-    </Nav>
-    <Nav to="/cookies">
-Cookies
-    </Nav>
-    <Nav to="/ads">
-Ads info
-    </Nav>
+    <Nav to="/support">Help Center</Nav>
+    <Nav to="/tos">Terms</Nav>
+    <Nav to="/privacy">Privacy policy </Nav>
+    <Nav to="/cookies">Cookies</Nav>
+    <Nav to="/ads">Ads info</Nav>
   </Footer>
 );

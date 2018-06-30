@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FollowBtn from '../../Ui/FollowButton';
+import Button from '../../Ui/FollowButton';
 import verificationIcon from '../../Ui/verification-icon.svg';
 import closeIcon from '../../Ui/close-icon.svg';
 
@@ -55,12 +55,12 @@ const VerificationIcon = styled.img`
   height: 16px;
 `;
 
-const FollowButton = styled(FollowBtn)`
+const FollowButton = styled(Button)`
   border-radius: 20px;
   padding: 5px 20px;
 `;
 
-const CloseBtn = styled.button`
+const CloseButton = styled.button`
   background: url(${closeIcon}) no-repeat;
   height: 8px;
   width: 8px;
@@ -80,19 +80,13 @@ const ProfileBlock = (props) => {
       </AvatarWrap>
       <Info>
         <Title>
-          <Name>
-            {name}
-          </Name>
+          <Name>{name}</Name>
           {verification && <VerificationIcon src={verificationIcon} />}
-          <Login>
-            {login}
-          </Login>
+          <Login>{login}</Login>
         </Title>
-        <FollowButton>
-Follow
-        </FollowButton>
+        <FollowButton>Follow</FollowButton>
       </Info>
-      <CloseBtn />
+      <CloseButton />
     </Wrap>
   );
 };

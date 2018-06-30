@@ -72,7 +72,7 @@ export const Avatar = styled.img`
   margin-right: 16px;
 `;
 
-export const TweetBtn = styled.button`
+export const TweetButton = styled.button`
   text-align: center;
   line-height: 14px;
   font-size: 14px;

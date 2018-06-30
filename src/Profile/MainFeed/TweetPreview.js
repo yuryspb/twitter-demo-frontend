@@ -14,7 +14,7 @@ const Image = styled.img`
   height: 126px;
 `;
 
-const ReplyBlock = styled.div`
+const Reply = styled.div`
   padding-left: 10px;
   padding-top: 10px;
   padding-bottom: 8px;
@@ -27,7 +27,7 @@ const Title = styled.h2`
   color: black;
   margin: 0;
 `;
-const Descr = styled.span`
+const Description = styled.span`
   font-size: 14px;
   line-height: 21px;
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
@@ -40,14 +40,10 @@ const TweetPreview = (props) => {
   return (
     <Wrap>
       <Image src={image} />
-      <ReplyBlock>
-        <Title>
-          {title}
-        </Title>
-        <Descr>
-          {children}
-        </Descr>
-      </ReplyBlock>
+      <Reply>
+        <Title>{title}</Title>
+        <Description>{children}</Description>
+      </Reply>
     </Wrap>
   );
 };

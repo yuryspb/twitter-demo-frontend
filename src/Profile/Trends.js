@@ -67,9 +67,7 @@ const Trend = ({
   link, count, text, counttext,
 }) => (
   <TrendWrap>
-    <TrendLink to={link}>
-      {text}
-    </TrendLink>
+    <TrendLink to={link}>{text}</TrendLink>
     <TrendCount>
       {count}
       {counttext}
@@ -125,15 +123,9 @@ const trends = [
 export default () => (
   <Wrap>
     <Title>
-      <Header>
-United Kingdom Trends
-      </Header>
-      <Dot>
-•
-      </Dot>
-      <HeaderLink to="/change">
-Change
-      </HeaderLink>
+      <Header>United Kingdom Trends</Header>
+      <Dot>•</Dot>
+      <HeaderLink to="/change">Change</HeaderLink>
     </Title>
     {trends.map(trendblock => (
       <Trend

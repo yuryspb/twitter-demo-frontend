@@ -78,25 +78,11 @@ const users = [
 export default () => (
   <Wrap>
     <Title>
-      <Header>
-Who to follow
-      </Header>
-      <Dot>
-        {' '}
-•
-        {' '}
-      </Dot>
-      <HeaderLink to="/refresh">
-Refresh
-      </HeaderLink>
-      <Dot>
-        {' '}
-•
-        {' '}
-      </Dot>
-      <HeaderLink to="/who_to_follow/suggestions">
-View all
-      </HeaderLink>
+      <Header>Who to follow</Header>
+      <Dot> • </Dot>
+      <HeaderLink to="/refresh">Refresh</HeaderLink>
+      <Dot> • </Dot>
+      <HeaderLink to="/who_to_follow/suggestions">View all</HeaderLink>
     </Title>
     <Profiles>
       {users.map(user => (
@@ -113,9 +99,7 @@ View all
     </Profiles>
     <FindPeople>
       <PeopleIcon src={peopleIcon} />
-      <HeaderLink to="/who_to_follow/import">
-Find people you know
-      </HeaderLink>
+      <HeaderLink to="/who_to_follow/import">Find people you know</HeaderLink>
     </FindPeople>
   </Wrap>
 );

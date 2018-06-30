@@ -1,11 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Preview from './TweetPreview';
-import commentsIcon from '../../Ui/comments-icon.svg';
-import retweetsIcon from '../../Ui/retweet-icon.svg';
-import lovesIcon from '../../Ui/loves-clicked-icon.svg';
-import likesIcon from '../../Ui/loves-icon.svg';
-import emailsIcon from '../../Ui/direct-message-icon.svg';
+import Actions from './Actions';
 import pinnedIcon from '../../Ui/pinned-icon.svg';
 
 const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
@@ -38,7 +34,7 @@ const Post = styled.div`
   margin-left: 12px;
 `;
 
-const UsrName = styled.span`
+const UserName = styled.span`
   font-size: 15px;
   line-height: 30px;
   font-weight: bold;
@@ -55,43 +51,13 @@ const Time = styled.span`
 `;
 
 const Text = styled.p`
-  line-height: 22px;
-  font-size: 16px;
+  font-size: ${({ big }) => (big ? '25px' : '16px')};
+  line-height: ${({ big }) => (big ? '30px' : '22px')};
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
-  color: #292f33;
-  margin-top: 0;
-`;
-
-const BigText = styled.p`
-  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
-  line-height: 30px;
-  font-size: 25px;
   font-weight: 200;
   color: #292f33;
   margin-bottom: 13px;
   margin-top: 0;
-`;
-
-const Icon = styled.img`
-  margin-right: 11px;
-`;
-
-const Action = styled.div`
-  display: flex;
-`;
-
-const ActionCount = styled.span`
-  font-size: 13px;
-  line-height: 15px;
-  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-weight: ${({ liked }) => (liked ? 'bold' : 'normal')};
-  color: ${({ liked }) => (liked ? '#E2264D' : '#667580')};
-`;
-
-const ActionBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-  max-width: 250px;
 `;
 
 const Pinned = styled.span`
@@ -107,7 +73,7 @@ const Pin = styled.img`
   margin-bottom: 10px;
 `;
 
-const ImageBlock = styled.div`
+const Image = styled.div`
   margin-right: 11px;
   margin-bottom: 14px;
 `;
@@ -140,69 +106,32 @@ const TweetPost = (props) => {
       </Avatar>
       <Post>
         <div>
-          {pinned && (
-          <Pinned>
-Pinned Tweet
-          </Pinned>
-          )}
-          <UsrName>
-            {name}
-            {' '}
-          </UsrName>
+          {pinned && <Pinned>Pinned Tweet</Pinned>}
+          <UserName>{name} </UserName>
           <Time>
             @
-            {Time}
-            {' '}
-•
+            {Time} •
             {time}
           </Time>
         </div>
-        {bigFont && (
-        <BigText>
-          {text}
-        </BigText>
-        )}
-        {!bigFont && (
-        <Text>
-          {text}
-        </Text>
-        )}
+        <Text big={bigFont}>{text}</Text>
         {preview && (
           <Preview image={preview.image} link={preview.link} title={preview.title}>
             {preview.description}
           </Preview>
         )}
         {image && (
-          <ImageBlock>
+          <Image>
             <PostedImage src={image} />
-          </ImageBlock>
+          </Image>
         )}
-        <ActionBlock>
-          <Action>
-            <Icon src={commentsIcon} />
-            <ActionCount>
-              {comments > 0 && comments}
-            </ActionCount>
-          </Action>
-          <Action>
-            <Icon src={retweetsIcon} />
-            <ActionCount>
-              {retweets > 0 && retweets}
-            </ActionCount>
-          </Action>
-          <Action>
-            {liked ? <Icon src={lovesIcon} /> : <Icon src={likesIcon} />}
-            <ActionCount liked={liked}>
-              {likes > 0 && likes}
-            </ActionCount>
-          </Action>
-          <Action>
-            <Icon src={emailsIcon} />
-            <ActionCount>
-              {emails > 0 && emails}
-            </ActionCount>
-          </Action>
-        </ActionBlock>
+        <Actions
+          comments={comments}
+          retweets={retweets}
+          liked={liked}
+          likes={likes}
+          emails={emails}
+        />
       </Post>
     </Wrap>
   );

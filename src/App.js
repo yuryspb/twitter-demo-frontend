@@ -14,9 +14,7 @@ const Content = styled.main`
 const Temp = ({ location }) => (
   <React.Fragment>
     <Helmet>
-      <title>
-        {`Twitter demo ${location.pathname}`}
-      </title>
+      <title>{`Twitter demo ${location.pathname}`}</title>
     </Helmet>
     <h2>
       {`${location.pathname}${location.search} `}

@@ -10,7 +10,7 @@ import {
   SearchBlock,
   SearchInput,
   Avatar,
-  TweetBtn,
+  TweetButton,
 } from './styled';
 import homeIcon from '../Ui/home-icon.svg';
 import momentsIcon from '../Ui/moments-icon.svg';
@@ -71,9 +71,7 @@ export default () => (
           <SearchBlock>
             <SearchInput placeholder="Search Twitter" />
             <Avatar src={avatar} />
-            <TweetBtn>
-Tweet
-            </TweetBtn>
+            <TweetButton>Tweet</TweetButton>
           </SearchBlock>
         </div>
       </div>

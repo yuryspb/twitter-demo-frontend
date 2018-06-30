@@ -7,7 +7,7 @@ const Wrap = styled.div`
   margin-top: 30px;
 `;
 
-const CountBlock = styled.div`
+const Count = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 8px;
@@ -25,7 +25,7 @@ const CommonLink = styled(Link)`
   text-decoration: none;
 `;
 
-const ThumbnailBlock = styled.div`
+const Thumbnails = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -84,16 +84,14 @@ const media = [
 
 export default () => (
   <Wrap>
-    <CountBlock>
+    <Count>
       <Icon src={mediaIcon} />
-      <CommonLink to="/EveryInteract/media">
-522 Photos and videos
-      </CommonLink>
-    </CountBlock>
-    <ThumbnailBlock>
+      <CommonLink to="/EveryInteract/media">522 Photos and videos</CommonLink>
+    </Count>
+    <Thumbnails>
       {media.map(pic => (
         <ThumbnailPic key={pic.id} to={`/${pic.name}`} image={pic.src} alt={pic.name} />
       ))}
-    </ThumbnailBlock>
+    </Thumbnails>
   </Wrap>
 );
