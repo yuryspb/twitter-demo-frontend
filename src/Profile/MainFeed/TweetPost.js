@@ -4,8 +4,6 @@ import Preview from './TweetPreview';
 import Actions from './Actions';
 import pinnedIcon from '../../Ui/pinned-icon.svg';
 
-const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
-
 const Wrap = styled.div`
   display: flex;
   flex-direction: row;
@@ -24,6 +22,7 @@ const Avatar = styled.div`
 `;
 
 const AvatarImage = styled.img`
+  border-radius: 50%;
   width: 42px;
   height: 42px;
 `;
@@ -83,6 +82,7 @@ const PostedImage = styled.img`
 `;
 
 const TweetPost = ({
+  avatar,
   pinned,
   name,
   time,
@@ -95,6 +95,7 @@ const TweetPost = ({
   liked,
   likes,
   emails,
+  login,
 }) => (
   <Wrap>
     <Avatar pinned={pinned}>
@@ -107,7 +108,7 @@ const TweetPost = ({
         <UserName>{name} </UserName>
         <Time>
           @
-          {Time} •
+          {login} •
           {time}
         </Time>
       </div>
@@ -117,11 +118,7 @@ const TweetPost = ({
           {preview.description}
         </Preview>
       )}
-      {image && (
-        <Image>
-          <PostedImage src={image} />
-        </Image>
-      )}
+      {image && <Image>{image.map(map => <PostedImage key={map.id} src={map.url} />)}</Image>}
       <Actions
         comments={comments}
         retweets={retweets}

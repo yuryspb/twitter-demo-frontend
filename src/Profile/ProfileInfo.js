@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import format from 'date-fns/format';
 import locationIcon from '../Ui/location-icon.svg';
 import linkIcon from '../Ui/link-icon.svg';
 import joinedIcon from '../Ui/joined-icon.svg';
@@ -92,38 +93,56 @@ const InfoLink = styled.a`
   cursor: pointer;
 `;
 
-export default () => (
-  <Wrap>
-    <Info>
-      <UserName>Every Interaction</UserName>
-      <VerificationIcon src={verificationIcon} />
-    </Info>
-    <Login>@EveryInteract</Login>
-    <FollowCheck>Follows you</FollowCheck>
-    <Description>
-      UX Design studio focused problem
-      <br />
-      solving creativity. Design to us is how
-      <br />
-      can we make things *work* amazing.
-    </Description>
-    <div>
-      <Info>
-        <InfoIcon src={locationIcon} />
-        <InfoText>London, UK</InfoText>
-      </Info>
-      <Info>
-        <InfoIcon src={linkIcon} />
-        <InfoLink>everyinteraction.com</InfoLink>
-      </Info>
-      <Info>
-        <InfoIcon src={joinedIcon} />
-        <InfoText>Joined May 2008</InfoText>
-      </Info>
-    </div>
-    <ButtonBlock>
-      <MessageButton>Tweet to</MessageButton>
-      <MessageButton>Message</MessageButton>
-    </ButtonBlock>
-  </Wrap>
-);
+const strdate = date => format(date, 'MMMM YYYY');
+
+export default class ProfileInfo extends Component {
+  state = {
+    info: {},
+  };
+
+  componentDidMount() {
+    const source = 'https://twitter-demo.erodionov.ru';
+    const key = process.env.REACT_APP_SECRET_CODE;
+    fetch(`${source}/api/v1/accounts/1?access_token=${key}`)
+      .then(response => response.json())
+      .then(info => this.setState({ info }));
+  }
+
+  render() {
+    const { info } = this.state;
+
+    return (
+      <Wrap>
+        <Info>
+          <UserName>{info.display_name}</UserName>
+          <VerificationIcon src={verificationIcon} />
+        </Info>
+        <Login>@{info.username}</Login>
+        <FollowCheck>Follows you</FollowCheck>
+        {info.note && <Description>{info.note}</Description>}
+        <div>
+          {info.geo && (
+            <Info>
+              <InfoIcon src={locationIcon} />
+              <InfoText>{info.geo}</InfoText>
+            </Info>
+          )}
+          {info.url && (
+            <Info>
+              <InfoIcon src={linkIcon} />
+              <InfoLink>{info.url}</InfoLink>
+            </Info>
+          )}
+          <Info>
+            <InfoIcon src={joinedIcon} />
+            <InfoText>Joined {strdate(info.created_at)}</InfoText>
+          </Info>
+        </div>
+        <ButtonBlock>
+          <MessageButton>Tweet to</MessageButton>
+          <MessageButton>Message</MessageButton>
+        </ButtonBlock>
+      </Wrap>
+    );
+  }
+}

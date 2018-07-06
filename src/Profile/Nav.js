@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Button from '../Ui/FollowButton';
@@ -72,39 +72,68 @@ const MoreButton = styled.button`
   cursor: pointer;
 `;
 
-export default () => (
-  <Wrap>
-    <div className="container">
-      <div className="row">
-        <div className="col-lg-offset-3 col-lg-4">
-          <Menu>
-            <MenuTab to="/EveryInteract">
-              <MenuLink>Tweets</MenuLink>
-              <MenuNumber active>8,058</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/following">
-              <MenuLink>Following</MenuLink>
-              <MenuNumber>721</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/followers">
-              <MenuLink>Followers</MenuLink>
-              <MenuNumber>1,815</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/likes">
-              <MenuLink>Likes</MenuLink>
-              <MenuNumber>460</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/lists">
-              <MenuLink>Lists</MenuLink>
-              <MenuNumber>2</MenuNumber>
-            </MenuTab>
-          </Menu>
+const Avatar = styled.img`
+  position: absolute;
+  border-radius: 50%;
+  border: 6px solid white;
+  height: 210px;
+  top: 290px;
+`;
+
+export default class Nav extends Component {
+  state = {
+    info: {},
+  };
+
+  componentDidMount() {
+    const source = 'https://twitter-demo.erodionov.ru';
+    const key = process.env.REACT_APP_SECRET_CODE;
+    fetch(`${source}/api/v1/accounts/1?access_token=${key}`)
+      .then(response => response.json())
+      .then(info => this.setState({ info }));
+  }
+
+  render() {
+    const { info } = this.state;
+
+    return (
+      <Wrap>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-3">
+              <Avatar src={info.avatar} />
+            </div>
+            <div className="col-lg-4">
+              <Menu>
+                <MenuTab to="/">
+                  <MenuLink>Tweets</MenuLink>
+                  <MenuNumber active>{info.statuses_count}</MenuNumber>
+                </MenuTab>
+                <MenuTab exact to="/following">
+                  <MenuLink>Following</MenuLink>
+                  <MenuNumber>{info.following_count}</MenuNumber>
+                </MenuTab>
+                <MenuTab exact to="/followers">
+                  <MenuLink>Followers</MenuLink>
+                  <MenuNumber>{info.followers_count}</MenuNumber>
+                </MenuTab>
+                <MenuTab exact to="/likes">
+                  <MenuLink>Likes</MenuLink>
+                  <MenuNumber>460</MenuNumber>
+                </MenuTab>
+                <MenuTab exact to="/lists">
+                  <MenuLink>Lists</MenuLink>
+                  <MenuNumber>2</MenuNumber>
+                </MenuTab>
+              </Menu>
+            </div>
+            <div className="col-lg-5 end-lg">
+              <FollowButton>Follow</FollowButton>
+              <MoreButton />
+            </div>
+          </div>
         </div>
-        <div className="col-lg-5 end-lg">
-          <FollowButton>Follow</FollowButton>
-          <MoreButton />
-        </div>
-      </div>
-    </div>
-  </Wrap>
-);
+      </Wrap>
+    );
+  }
+}

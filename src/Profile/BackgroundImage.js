@@ -1,32 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
-const backgroundImage = `${process.env.PUBLIC_URL}/media//background-image.jpg`;
-
-const Background = styled.div`
-  background: url(${backgroundImage}) no-repeat;
+const Background = styled.img`
   width: 100%;
-  min-height: 380px;
-  background-size: cover;
+  max-height: 380px;
 `;
 
-const Avatar = styled.img`
-  position: relative;
-  height: 210px;
-  top: 260px;
-`;
+export default class ProfileInfo extends Component {
+  state = {
+    info: {},
+  };
 
-export default () => (
-  <div>
-    <Background src={backgroundImage}>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-3">
-            <Avatar src={avatar} />
-          </div>
-        </div>
+  componentDidMount() {
+    const source = 'https://twitter-demo.erodionov.ru';
+    const key = process.env.REACT_APP_SECRET_CODE;
+    fetch(`${source}/api/v1/accounts/1?access_token=${key}`)
+      .then(response => response.json())
+      .then(info => this.setState({ info }));
+  }
+
+  render() {
+    const { info } = this.state;
+
+    return (
+      <div>
+        <Background src={info.header} />
       </div>
-    </Background>
-  </div>
-);
+    );
+  }
+}
