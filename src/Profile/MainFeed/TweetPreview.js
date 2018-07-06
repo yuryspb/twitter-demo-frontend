@@ -34,18 +34,14 @@ const Description = styled.span`
   color: black;
 `;
 
-const TweetPreview = (props) => {
-  const { image, title, children } = props;
-
-  return (
-    <Wrap>
-      <Image src={image} />
-      <Reply>
-        <Title>{title}</Title>
-        <Description>{children}</Description>
-      </Reply>
-    </Wrap>
-  );
-};
+const TweetPreview = ({ image, title, children }) => (
+  <Wrap>
+    <Image src={image} />
+    <Reply>
+      <Title>{title}</Title>
+      <Description>{children}</Description>
+    </Reply>
+  </Wrap>
+);
 
 export default TweetPreview;

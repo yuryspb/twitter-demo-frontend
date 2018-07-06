@@ -28,31 +28,27 @@ const Wrap = styled.div`
   max-width: 250px;
 `;
 
-const Actions = (props) => {
-  const {
-    comments, retweets, liked, likes, emails,
-  } = props;
-
-  return (
-    <Wrap>
-      <Action>
-        <Icon src={commentsIcon} />
-        <Count>{comments > 0 && comments}</Count>
-      </Action>
-      <Action>
-        <Icon src={retweetsIcon} />
-        <Count>{retweets > 0 && retweets}</Count>
-      </Action>
-      <Action>
-        {liked ? <Icon src={lovesIcon} /> : <Icon src={likesIcon} />}
-        <Count liked={liked}>{likes > 0 && likes}</Count>
-      </Action>
-      <Action>
-        <Icon src={emailsIcon} />
-        <Count>{emails > 0 && emails}</Count>
-      </Action>
-    </Wrap>
-  );
-};
+const Actions = ({
+  comments, retweets, liked, likes, emails,
+}) => (
+  <Wrap>
+    <Action>
+      <Icon src={commentsIcon} />
+      <Count>{comments > 0 && comments}</Count>
+    </Action>
+    <Action>
+      <Icon src={retweetsIcon} />
+      <Count>{retweets > 0 && retweets}</Count>
+    </Action>
+    <Action>
+      {liked ? <Icon src={lovesIcon} /> : <Icon src={likesIcon} />}
+      <Count liked={liked}>{likes > 0 && likes}</Count>
+    </Action>
+    <Action>
+      <Icon src={emailsIcon} />
+      <Count>{emails > 0 && emails}</Count>
+    </Action>
+  </Wrap>
+);
 
 export default Actions;

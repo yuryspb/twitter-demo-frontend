@@ -68,27 +68,23 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-const ProfileBlock = (props) => {
-  const {
-    image, name, verification, login,
-  } = props;
-
-  return (
-    <Wrap>
-      <AvatarWrap>
-        <Avatar src={image} />
-      </AvatarWrap>
-      <Info>
-        <Title>
-          <Name>{name}</Name>
-          {verification && <VerificationIcon src={verificationIcon} />}
-          <Login>{login}</Login>
-        </Title>
-        <FollowButton>Follow</FollowButton>
-      </Info>
-      <CloseButton />
-    </Wrap>
-  );
-};
+const ProfileBlock = ({
+  image, name, verification, login,
+}) => (
+  <Wrap>
+    <AvatarWrap>
+      <Avatar src={image} />
+    </AvatarWrap>
+    <Info>
+      <Title>
+        <Name>{name}</Name>
+        {verification && <VerificationIcon src={verificationIcon} />}
+        <Login>{login}</Login>
+      </Title>
+      <FollowButton>Follow</FollowButton>
+    </Info>
+    <CloseButton />
+  </Wrap>
+);
 
 export default ProfileBlock;

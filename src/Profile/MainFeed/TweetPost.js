@@ -82,59 +82,55 @@ const PostedImage = styled.img`
   width: 490px;
 `;
 
-const TweetPost = (props) => {
-  const {
-    pinned,
-    name,
-    time,
-    bigFont,
-    text,
-    preview,
-    image,
-    comments,
-    retweets,
-    liked,
-    likes,
-    emails,
-  } = props;
-
-  return (
-    <Wrap>
-      <Avatar pinned={pinned}>
-        {pinned && <Pin src={pinnedIcon} />}
-        <AvatarImage src={avatar} />
-      </Avatar>
-      <Post>
-        <div>
-          {pinned && <Pinned>Pinned Tweet</Pinned>}
-          <UserName>{name} </UserName>
-          <Time>
-            @
-            {Time} •
-            {time}
-          </Time>
-        </div>
-        <Text big={bigFont}>{text}</Text>
-        {preview && (
-          <Preview image={preview.image} link={preview.link} title={preview.title}>
-            {preview.description}
-          </Preview>
-        )}
-        {image && (
-          <Image>
-            <PostedImage src={image} />
-          </Image>
-        )}
-        <Actions
-          comments={comments}
-          retweets={retweets}
-          liked={liked}
-          likes={likes}
-          emails={emails}
-        />
-      </Post>
-    </Wrap>
-  );
-};
+const TweetPost = ({
+  pinned,
+  name,
+  time,
+  bigFont,
+  text,
+  preview,
+  image,
+  comments,
+  retweets,
+  liked,
+  likes,
+  emails,
+}) => (
+  <Wrap>
+    <Avatar pinned={pinned}>
+      {pinned && <Pin src={pinnedIcon} />}
+      <AvatarImage src={avatar} />
+    </Avatar>
+    <Post>
+      <div>
+        {pinned && <Pinned>Pinned Tweet</Pinned>}
+        <UserName>{name} </UserName>
+        <Time>
+          @
+          {Time} •
+          {time}
+        </Time>
+      </div>
+      <Text big={bigFont}>{text}</Text>
+      {preview && (
+        <Preview image={preview.image} link={preview.link} title={preview.title}>
+          {preview.description}
+        </Preview>
+      )}
+      {image && (
+        <Image>
+          <PostedImage src={image} />
+        </Image>
+      )}
+      <Actions
+        comments={comments}
+        retweets={retweets}
+        liked={liked}
+        likes={likes}
+        emails={emails}
+      />
+    </Post>
+  </Wrap>
+);
 
 export default TweetPost;
