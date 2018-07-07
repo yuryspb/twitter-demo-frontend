@@ -32,15 +32,12 @@ const HeaderLink = styled(NavLink)`
   }
 `;
 
-const strdate = date => distanceInWordsToNow(new Date(date));
+const formatDate = date => distanceInWordsToNow(new Date(date));
 
 export default class Tweets extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: [],
-    };
-  }
+  state = {
+    posts: [],
+  };
 
   componentDidMount() {
     const source = 'https://twitter-demo.erodionov.ru';
@@ -72,7 +69,7 @@ export default class Tweets extends Component {
             avatar={post.account.avatar}
             name={post.account.display_name}
             login={post.account.username}
-            time={strdate(post.created_at)}
+            time={formatDate(post.created_at)}
             comments={post.comments}
             retweets={post.reblogs_count}
             likes={post.favourites_count}

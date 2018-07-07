@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import format from 'date-fns/format';
 import locationIcon from '../Ui/location-icon.svg';
@@ -93,56 +93,42 @@ const InfoLink = styled.a`
   cursor: pointer;
 `;
 
-const strdate = date => format(date, 'MMMM YYYY');
+const formatDate = date => format(date, 'MMMM YYYY');
 
-export default class ProfileInfo extends Component {
-  state = {
-    info: {},
-  };
-
-  componentDidMount() {
-    const source = 'https://twitter-demo.erodionov.ru';
-    const key = process.env.REACT_APP_SECRET_CODE;
-    fetch(`${source}/api/v1/accounts/1?access_token=${key}`)
-      .then(response => response.json())
-      .then(info => this.setState({ info }));
-  }
-
-  render() {
-    const { info } = this.state;
-
-    return (
-      <Wrap>
-        <Info>
-          <UserName>{info.display_name}</UserName>
-          <VerificationIcon src={verificationIcon} />
-        </Info>
-        <Login>@{info.username}</Login>
-        <FollowCheck>Follows you</FollowCheck>
-        {info.note && <Description>{info.note}</Description>}
-        <div>
-          {info.geo && (
-            <Info>
-              <InfoIcon src={locationIcon} />
-              <InfoText>{info.geo}</InfoText>
-            </Info>
-          )}
-          {info.url && (
-            <Info>
-              <InfoIcon src={linkIcon} />
-              <InfoLink>{info.url}</InfoLink>
-            </Info>
-          )}
+function ProfileInfo({ userData }) {
+  return (
+    <Wrap>
+      <Info>
+        <UserName>{userData.display_name}</UserName>
+        <VerificationIcon src={verificationIcon} />
+      </Info>
+      <Login>@{userData.username}</Login>
+      <FollowCheck>Follows you</FollowCheck>
+      {userData.note && <Description>{userData.note}</Description>}
+      <div>
+        {userData.geo && (
           <Info>
-            <InfoIcon src={joinedIcon} />
-            <InfoText>Joined {strdate(info.created_at)}</InfoText>
+            <InfoIcon src={locationIcon} />
+            <InfoText>{userData.geo}</InfoText>
           </Info>
-        </div>
-        <ButtonBlock>
-          <MessageButton>Tweet to</MessageButton>
-          <MessageButton>Message</MessageButton>
-        </ButtonBlock>
-      </Wrap>
-    );
-  }
+        )}
+        {userData.url && (
+          <Info>
+            <InfoIcon src={linkIcon} />
+            <InfoLink>{userData.url}</InfoLink>
+          </Info>
+        )}
+        <Info>
+          <InfoIcon src={joinedIcon} />
+          <InfoText>Joined {formatDate(userData.created_at)}</InfoText>
+        </Info>
+      </div>
+      <ButtonBlock>
+        <MessageButton>Tweet to</MessageButton>
+        <MessageButton>Message</MessageButton>
+      </ButtonBlock>
+    </Wrap>
+  );
 }
+
+export default ProfileInfo;

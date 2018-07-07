@@ -1,40 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import BackgroundImage from './BackgroundImage';
-import ProfileNav from './Nav';
-import ProfileInfo from './ProfileInfo';
-import CommonFollowers from './CommonFollowers';
-import MediaBlock from './MediaBlock';
-import ProfileTimeline from './MainFeed/Timeline';
-import FollowSuggestions from './FollowSuggestions';
-import Trends from './Trends';
-import Footer from './Footer';
+import { Switch, Route } from 'react-router-dom';
+import Main from './Main';
 
-function App() {
-  return (
-    <div className="App">
-      <Helmet title="EveryInteract (@EveryInteract) | Twitter demo" />
-      <BackgroundImage />
-      <ProfileNav />
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-3">
-            <ProfileInfo />
-            <CommonFollowers />
-            <MediaBlock />
-          </div>
-          <div className="col-lg-6">
-            <ProfileTimeline />
-          </div>
-          <div className="col-lg-3">
-            <FollowSuggestions />
-            <Trends />
-            <Footer />
-          </div>
-        </div>
+class ProfilePage extends Component {
+  state = {
+    userData: {},
+  };
+
+  componentDidMount() {
+    const {
+      match: {
+        params: { id },
+      },
+    } = this.props;
+
+    const source = 'https://twitter-demo.erodionov.ru';
+    const key = process.env.REACT_APP_SECRET_CODE;
+
+    fetch(`${source}/api/v1/accounts/${id}?access_token=${key}`)
+      .then(res => res.json())
+      .then((userData) => {
+        this.setState({ userData });
+      });
+  }
+
+  render() {
+    const { userData } = this.state;
+
+    return (
+      <div className="App">
+        <Helmet title={`${userData.display_name} @${userData.username} | Twitter demo`} />
+        <Switch>
+          <Route
+            path={`/${userData.id}`}
+            render={props => <Main {...props} userData={userData} />}
+          />
+        </Switch>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default App;
+export default ProfilePage;
