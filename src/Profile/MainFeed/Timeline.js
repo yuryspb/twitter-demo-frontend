@@ -40,20 +40,23 @@ export default class Tweets extends Component {
   };
 
   componentDidMount() {
+    const { userData } = this.props;
     const source = 'https://twitter-demo.erodionov.ru';
     const key = process.env.REACT_APP_SECRET_CODE;
-    fetch(`${source}/api/v1/accounts/1/statuses?since_id=1&access_token=${key}`)
+
+    fetch(`${source}/api/v1/accounts/${userData.id}/statuses?since_id=1&access_token=${key}`)
       .then(response => response.json())
       .then(posts => this.setState({ posts }));
   }
 
   render() {
     const { posts } = this.state;
+    const { userData } = this.props;
 
     return (
       <Wrap>
         <Header>
-          <HeaderLink exact to="/" active>
+          <HeaderLink exact to={`/${userData}/`} active>
             Tweets
           </HeaderLink>
           <HeaderLink exact to="/with_replies">
@@ -66,6 +69,7 @@ export default class Tweets extends Component {
 
         {posts.map(post => (
           <Tweet
+            key={post.id}
             avatar={post.account.avatar}
             name={post.account.display_name}
             login={post.account.username}

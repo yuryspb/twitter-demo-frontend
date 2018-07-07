@@ -29,15 +29,15 @@ class ProfilePage extends Component {
     const { userData } = this.state;
 
     return (
-      <div className="App">
-        <Helmet title={`${userData.display_name} @${userData.username} | Twitter demo`} />
+      <React.Fragment>
+        <Helmet title={`${userData.display_name} (@${userData.username}) | Twitter demo`} />
         <Switch>
           <Route
             path={`/${userData.id}`}
             render={props => <Main {...props} userData={userData} />}
           />
         </Switch>
-      </div>
+      </React.Fragment>
     );
   }
 }

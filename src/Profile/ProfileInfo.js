@@ -90,6 +90,9 @@ const InfoLink = styled.a`
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #1d81c2;
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   cursor: pointer;
 `;
 
@@ -104,12 +107,18 @@ function ProfileInfo({ userData }) {
       </Info>
       <Login>@{userData.username}</Login>
       <FollowCheck>Follows you</FollowCheck>
-      {userData.note && <Description>{userData.note}</Description>}
+      {userData.note && (
+        <Description
+          dangerouslySetInnerHTML={{
+            __html: userData.note,
+          }}
+        />
+      )}
       <div>
-        {userData.geo && (
+        {userData.location && (
           <Info>
             <InfoIcon src={locationIcon} />
-            <InfoText>{userData.geo}</InfoText>
+            <InfoText>{userData.location}</InfoText>
           </Info>
         )}
         {userData.url && (

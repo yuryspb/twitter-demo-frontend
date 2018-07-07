@@ -80,11 +80,11 @@ const followers = [
   },
 ];
 
-export default () => (
+export default ({ userData }) => (
   <Wrap>
     <Count>
       <Icon src={followersIcon} />
-      <CommonLink to="/EveryInteract/followers_you_follow">6 Followers you know</CommonLink>
+      <CommonLink to={`/${userData.id}/followers_you_follow`}>6 Followers you know</CommonLink>
     </Count>
     <Avatars>
       {followers.map(user => (

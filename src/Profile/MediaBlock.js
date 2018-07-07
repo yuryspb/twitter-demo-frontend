@@ -82,11 +82,11 @@ const media = [
   },
 ];
 
-export default () => (
+export default ({ userData }) => (
   <Wrap>
     <Count>
       <Icon src={mediaIcon} />
-      <CommonLink to="/EveryInteract/media">522 Photos and videos</CommonLink>
+      <CommonLink to={`/${userData.id}/media`}>522 Photos and videos</CommonLink>
     </Count>
     <Thumbnails>
       {media.map(pic => (

@@ -112,7 +112,7 @@ const TweetPost = ({
           {time}
         </Time>
       </div>
-      <Text big={bigFont}>{text}</Text>
+      <Text big={bigFont} dangerouslySetInnerHTML={{ __html: text }} />
       {preview && (
         <Preview image={preview.image} link={preview.link} title={preview.title}>
           {preview.description}

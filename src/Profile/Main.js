@@ -13,17 +13,17 @@ function Main(props) {
   const { userData } = props;
   return (
     <div className="App">
-      <BackgroundImage />
-      <ProfileNav />
+      <BackgroundImage userData={userData} />
+      <ProfileNav userData={userData} />
       <div className="container">
         <div className="row">
           <div className="col-lg-3">
             <ProfileInfo userData={userData} />
-            <CommonFollowers />
-            <MediaBlock />
+            <CommonFollowers userData={userData} />
+            <MediaBlock userData={userData} />
           </div>
           <div className="col-lg-6">
-            <ProfileTimeline />
+            <ProfileTimeline userData={userData} />
           </div>
           <div className="col-lg-3">
             <FollowSuggestions />
