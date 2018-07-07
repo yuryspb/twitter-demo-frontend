@@ -56,13 +56,13 @@ export default class Tweets extends Component {
     return (
       <Wrap>
         <Header>
-          <HeaderLink exact to={`/${userData}/`} active>
+          <HeaderLink exact to={`/${userData.id}/`} active>
             Tweets
           </HeaderLink>
-          <HeaderLink exact to="/with_replies">
+          <HeaderLink exact to={`/${userData.id}/with_replies`}>
             Tweets & replies
           </HeaderLink>
-          <HeaderLink exact to="/media">
+          <HeaderLink exact to={`/${userData.id}/media`}>
             Media
           </HeaderLink>
         </Header>
