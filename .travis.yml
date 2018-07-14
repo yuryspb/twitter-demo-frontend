@@ -7,7 +7,7 @@ cache:
 script: yarn build
 deploy:
   - provider: script 
-    script: now --public --token $NOW_TOKEN -e REACT_APP_SECRET_CODE=$REACT_APP_SECRET_CODE
+    script: now --public --token $NOW_TOKEN -e REACT_APP_SECRET_CODE=$REACT_APP_SECRET_CODE && now alias --token $NOW_TOKEN
     skip_cleanup: true
     on:
       master: true

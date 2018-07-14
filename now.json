@@ -1,5 +1,5 @@
 {
   "env": {
-    "REACT_APP_SECRET_CODE": "@acme-api-key"
+    "REACT_APP_SECRET_CODE": "@api-key"
   }
 }
