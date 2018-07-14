@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import BackgroundImage from './BackgroundImage';
 import ProfileNav from './Nav';
@@ -9,7 +10,11 @@ import FollowSuggestions from './FollowSuggestions';
 import Trends from './Trends';
 import Footer from './Footer';
 
-function Main(props) {
+type Props = {
+  userData: Object,
+};
+
+function Main(props: Props) {
   const { userData } = props;
   return (
     <div className="App">

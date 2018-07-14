@@ -1,10 +1,11 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import commentsIcon from '../../Ui/comments-icon.svg';
 import retweetsIcon from '../../Ui/retweet-icon.svg';
 import lovesIcon from '../../Ui/loves-clicked-icon.svg';
 import likesIcon from '../../Ui/loves-icon.svg';
-import emailsIcon from '../../Ui/direct-message-icon.svg';
+import directMessageIcon from '../../Ui/direct-message-icon.svg';
 
 const Icon = styled.img`
   margin-right: 11px;
@@ -28,9 +29,16 @@ const Wrap = styled.div`
   max-width: 250px;
 `;
 
+type Props = {
+  comments: number,
+  retweets: number,
+  liked: boolean,
+  likes: number,
+};
+
 const Actions = ({
-  comments, retweets, liked, likes, emails,
-}) => (
+  comments, retweets, liked, likes,
+}: Props) => (
   <Wrap>
     <Action>
       <Icon src={commentsIcon} />
@@ -45,8 +53,7 @@ const Actions = ({
       <Count liked={liked}>{likes > 0 && likes}</Count>
     </Action>
     <Action>
-      <Icon src={emailsIcon} />
-      <Count>{emails > 0 && emails}</Count>
+      <Icon src={directMessageIcon} />
     </Action>
   </Wrap>
 );

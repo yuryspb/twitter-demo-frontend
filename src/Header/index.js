@@ -29,7 +29,10 @@ const NavLink = styled(Link)`
   cursor: pointer;
 `;
 
-const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
+const publicUrl = process.env.PUBLIC_URL;
+if (!publicUrl && publicUrl !== '') throw new Error('Missing PUBLIC_URL');
+
+const avatar = `${publicUrl}/avatars/avatar.png`;
 
 export default () => (
   <Wrap>

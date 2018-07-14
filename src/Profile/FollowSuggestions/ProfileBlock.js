@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../../Ui/FollowButton';
@@ -68,9 +69,16 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
+type Props = {
+  image: string,
+  name: string,
+  verification: boolean,
+  login: string,
+};
+
 const ProfileBlock = ({
   image, name, verification, login,
-}) => (
+}: Props) => (
   <Wrap>
     <AvatarWrap>
       <Avatar src={image} />

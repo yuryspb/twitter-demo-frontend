@@ -1,9 +1,19 @@
+// @flow
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 import Main from './Main';
 
-class ProfilePage extends Component {
+type Props = {
+  userData: Object,
+  match: Object,
+};
+
+type State = {
+  userData: Object,
+};
+
+class ProfilePage extends Component<Props, State> {
   state = {
     userData: {},
   };
@@ -17,6 +27,7 @@ class ProfilePage extends Component {
 
     const source = 'https://twitter-demo.erodionov.ru';
     const key = process.env.REACT_APP_SECRET_CODE;
+    if (!key) throw new Error('Missing REACT_APP_SECRET_CODE');
 
     fetch(`${source}/api/v1/accounts/${id}?access_token=${key}`)
       .then(res => res.json())

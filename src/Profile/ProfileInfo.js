@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import format from 'date-fns/format';
@@ -98,7 +99,11 @@ const InfoLink = styled.a`
 
 const formatDate = date => format(date, 'MMMM YYYY');
 
-function ProfileInfo({ userData }) {
+type Props = {
+  userData: Object,
+};
+
+function ProfileInfo({ userData }: Props) {
   return (
     <Wrap>
       <Info>
