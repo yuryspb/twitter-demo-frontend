@@ -27,7 +27,7 @@ class ProfilePage extends Component<Props, State> {
 
     const source = 'https://twitter-demo.erodionov.ru';
     const key = process.env.REACT_APP_SECRET_CODE;
-    if (!key) throw new Error('Missing REACT_APP_SECRET_CODE');
+    if (!key && key !== '') throw new Error('Missing REACT_APP_SECRET_CODE');
 
     fetch(`${source}/api/v1/accounts/${id}?access_token=${key}`)
       .then(res => res.json())

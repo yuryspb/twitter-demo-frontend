@@ -52,7 +52,7 @@ export default class Tweets extends Component<Props, State> {
     const { userData } = this.props;
     const source = 'https://twitter-demo.erodionov.ru';
     const key = process.env.REACT_APP_SECRET_CODE;
-    if (!key) throw new Error('Missing REACT_APP_SECRET_CODE');
+    if (!key && key !== '') throw new Error('Missing REACT_APP_SECRET_CODE');
 
     fetch(`${source}/api/v1/accounts/${userData.id}/statuses?since_id=1&access_token=${key}`)
       .then(response => response.json())
