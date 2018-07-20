@@ -1,10 +1,9 @@
-import React from 'react';
+// @flow
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import Tweet from './TweetPost';
-
-const tweetPreview = `${process.env.PUBLIC_URL}/media/tweet-preview.jpg`;
 
 const Wrap = styled.div`
   width: 100%;
@@ -34,98 +33,73 @@ const HeaderLink = styled(NavLink)`
   }
 `;
 
-const TweetReply = {
-  title: 'The Future of Web Fonts',
-  description:
-    'We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…',
-  link: 'vilijamis.com',
-  image: tweetPreview,
+const formatDate = date => distanceInWordsToNow(new Date(date));
+
+type UserData = {
+  id: string,
 };
 
-const tweets = [
-  {
-    name: 'Every Interaction',
-    login: 'EveryInteract',
-    time: '2015, 5, 2',
-    comments: 0,
-    retweets: 17,
-    likes: 47,
-    directmsg: null,
-    pinned: true,
-    liked: true,
-    bigFont: true,
-    text:
-      'We’ve made some more resources for all you wonderful #design folk everyinteraction.com/resources/ #webdesign #UI',
-    image: `${process.env.PUBLIC_URL}/media/tweet-pic.jpg`,
-    preview: null,
-  },
-  {
-    name: 'Every Interaction',
-    login: 'EveryInteract',
-    time: '2018, 6, 21, 23:07',
-    comments: 1,
-    retweets: 4,
-    likes: 2,
-    directmsg: null,
-    pinned: false,
-    liked: false,
-    bigFont: true,
-    text:
-      'Our new website concept; Taking you from… @ Every Interaction instagram.com/p/BNFGrfhBP3M/',
-    image: null,
-    preview: null,
-  },
-  {
-    name: 'Every Interaction',
-    login: 'EveryInteract',
-    time: '2017, 11, 18',
-    comments: 0,
-    retweets: 0,
-    likes: 0,
-    directmsg: null,
+type Props = {
+  userData: UserData,
+};
 
-    pinned: false,
-    liked: 0,
-    bigFont: false,
-    text:
-      'Variable web fonts are coming, and will open a world of opportunities for weight use online',
-    image: null,
-    preview: TweetReply,
-  },
-];
+type State = {
+  posts: Array<Object>,
+};
 
-const strdate = date => distanceInWordsToNow(new Date(date));
+export default class Tweets extends Component<Props, State> {
+  state = {
+    posts: [],
+  };
 
-export default () => (
-  <Wrap>
-    <Header>
-      <HeaderLink exact to="/" active>
-        Tweets
-      </HeaderLink>
-      <HeaderLink exact to="/with_replies">
-        Tweets & replies
-      </HeaderLink>
-      <HeaderLink exact to="/media">
-        Media
-      </HeaderLink>
-    </Header>
+  componentDidMount() {
+    const { userData } = this.props;
+    const source = 'https://twitter-demo.erodionov.ru';
+    const key = process.env.REACT_APP_SECRET_CODE;
+    if (!key && key !== '') throw new Error('Missing REACT_APP_SECRET_CODE');
 
-    {tweets.map(post => (
-      <Tweet
-        name={post.name}
-        login={post.login}
-        time={strdate(post.time)}
-        comments={post.comments}
-        retweets={post.retweets}
-        likes={post.likes}
-        directmsg={post.directmsg}
-        pinned={post.pinned}
-        liked={post.liked}
-        bigFont={post.bigFont}
-        text={post.text}
-        image={post.image}
-        preview={post.preview}
-      />
-    ))}
-  </Wrap>
-);
+    fetch(`${source}/api/v1/accounts/${userData.id}/statuses?since_id=1&access_token=${key}`)
+      .then(response => response.json())
+      .then(posts => this.setState({ posts }));
+  }
+
+  render() {
+    const { posts } = this.state;
+    const { userData } = this.props;
+
+    return (
+      <Wrap>
+        <Header>
+          <HeaderLink exact to={`/${userData.id}/`} active>
+            Tweets
+          </HeaderLink>
+          <HeaderLink exact to={`/${userData.id}/with_replies`}>
+            Tweets & replies
+          </HeaderLink>
+          <HeaderLink exact to={`/${userData.id}/media`}>
+            Media
+          </HeaderLink>
+        </Header>
+
+        {posts.map(post => (
+          <Tweet
+            key={post.id}
+            avatar={post.account.avatar}
+            name={post.account.display_name}
+            login={post.account.username}
+            time={formatDate(post.created_at)}
+            comments={post.comments}
+            retweets={post.reblogs_count}
+            likes={post.favourites_count}
+            pinned={post.pinned}
+            liked={post.activeLike}
+            bigFont={post.sensitive}
+            text={post.content}
+            image={post.media_attachments}
+            preview={post.in_reply_to_id}
+          />
+        ))}
+      </Wrap>
+    );
+  }
+}

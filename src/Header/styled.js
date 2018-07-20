@@ -1,3 +1,4 @@
+// @flow
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import searchbarIcon from '../Ui/searchbar-icon.svg';

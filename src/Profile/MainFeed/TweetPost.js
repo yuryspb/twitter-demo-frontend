@@ -1,10 +1,9 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import Preview from './TweetPreview';
 import Actions from './Actions';
 import pinnedIcon from '../../Ui/pinned-icon.svg';
-
-const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
 
 const Wrap = styled.div`
   display: flex;
@@ -24,6 +23,7 @@ const Avatar = styled.div`
 `;
 
 const AvatarImage = styled.img`
+  border-radius: 50%;
   width: 42px;
   height: 42px;
 `;
@@ -82,7 +82,24 @@ const PostedImage = styled.img`
   width: 490px;
 `;
 
+type Props = {
+  avatar: string,
+  pinned: boolean,
+  name: string,
+  time: string,
+  bigFont: boolean,
+  text: string,
+  preview: Object,
+  image: Array<Object>,
+  comments: number,
+  retweets: number,
+  liked: boolean,
+  likes: number,
+  login: number,
+};
+
 const TweetPost = ({
+  avatar,
   pinned,
   name,
   time,
@@ -94,8 +111,8 @@ const TweetPost = ({
   retweets,
   liked,
   likes,
-  emails,
-}) => (
+  login,
+}: Props) => (
   <Wrap>
     <Avatar pinned={pinned}>
       {pinned && <Pin src={pinnedIcon} />}
@@ -107,28 +124,18 @@ const TweetPost = ({
         <UserName>{name} </UserName>
         <Time>
           @
-          {Time} •
+          {login} •
           {time}
         </Time>
       </div>
-      <Text big={bigFont}>{text}</Text>
+      <Text big={bigFont} dangerouslySetInnerHTML={{ __html: text }} />
       {preview && (
         <Preview image={preview.image} link={preview.link} title={preview.title}>
           {preview.description}
         </Preview>
       )}
-      {image && (
-        <Image>
-          <PostedImage src={image} />
-        </Image>
-      )}
-      <Actions
-        comments={comments}
-        retweets={retweets}
-        liked={liked}
-        likes={likes}
-        emails={emails}
-      />
+      {image && <Image>{image.map(map => <PostedImage key={map.id} src={map.url} />)}</Image>}
+      <Actions comments={comments} retweets={retweets} liked={liked} likes={likes} />
     </Post>
   </Wrap>
 );

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -72,39 +73,66 @@ const MoreButton = styled.button`
   cursor: pointer;
 `;
 
-export default () => (
-  <Wrap>
-    <div className="container">
-      <div className="row">
-        <div className="col-lg-offset-3 col-lg-4">
-          <Menu>
-            <MenuTab to="/EveryInteract">
-              <MenuLink>Tweets</MenuLink>
-              <MenuNumber active>8,058</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/following">
-              <MenuLink>Following</MenuLink>
-              <MenuNumber>721</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/followers">
-              <MenuLink>Followers</MenuLink>
-              <MenuNumber>1,815</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/likes">
-              <MenuLink>Likes</MenuLink>
-              <MenuNumber>460</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/lists">
-              <MenuLink>Lists</MenuLink>
-              <MenuNumber>2</MenuNumber>
-            </MenuTab>
-          </Menu>
-        </div>
-        <div className="col-lg-5 end-lg">
-          <FollowButton>Follow</FollowButton>
-          <MoreButton />
+const Avatar = styled.img`
+  position: absolute;
+  border-radius: 50%;
+  border: 6px solid white;
+  height: 210px;
+  top: 290px;
+`;
+
+type UserData = {
+  id: string,
+  avatar: string,
+  statuses_count: number,
+  following_count: number,
+  followers_count: number,
+};
+
+type Props = {
+  userData: UserData,
+};
+
+function ProfileNav({ userData }: Props) {
+  return (
+    <Wrap>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-3">
+            <Avatar src={userData.avatar} />
+          </div>
+          <div className="col-lg-4">
+            <Menu>
+              <MenuTab to="/">
+                <MenuLink>Tweets</MenuLink>
+                <MenuNumber active>{userData.statuses_count}</MenuNumber>
+              </MenuTab>
+              <MenuTab exact to={`/${userData.id}/following`}>
+                <MenuLink>Following</MenuLink>
+                <MenuNumber>{userData.following_count}</MenuNumber>
+              </MenuTab>
+              <MenuTab exact to={`/${userData.id}/followers`}>
+                <MenuLink>Followers</MenuLink>
+                <MenuNumber>{userData.followers_count}</MenuNumber>
+              </MenuTab>
+              <MenuTab exact to={`/${userData.id}/likes`}>
+                <MenuLink>Likes</MenuLink>
+                <MenuNumber>460</MenuNumber>
+              </MenuTab>
+              <MenuTab exact to={`/${userData.id}/lists`}>
+                <MenuLink>Lists</MenuLink>
+                <MenuNumber>2</MenuNumber>
+              </MenuTab>
+            </Menu>
+          </div>
+          <div className="col-lg-5 end-lg">
+            <FollowButton>Follow</FollowButton>
+            <MoreButton />
+          </div>
         </div>
       </div>
-    </div>
-  </Wrap>
-);
+    </Wrap>
+  );
+}
+
+export default ProfileNav;

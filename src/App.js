@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import {
@@ -31,8 +32,7 @@ function App() {
         <Content>
           <Helmet title="Twitter demo" />
           <Switch>
-            <Redirect exact from="/" to="/EveryInteract" />
-            <Route exact path="/EveryInteract" component={Profile} />
+            <Redirect from="/" to="/1" exact />
             <Route exact path="/moments" component={Temp} />
             <Route exact path="/notifications" component={Temp} />
             <Route exact path="/messages" component={Temp} />
@@ -46,6 +46,7 @@ function App() {
             <Route exact path="/search" component={Temp} />
             <Route exact path="/who_to_follow/import" component={Temp} />
             <Route exact path="/who_to_follow/suggestions" component={Temp} />
+            <Route path="/:id" component={Profile} />
           </Switch>
         </Content>
       </React.Fragment>

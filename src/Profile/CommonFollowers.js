@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -47,44 +48,55 @@ const Follower = styled.li`
   list-style: none;
 `;
 
+const publicUrl = process.env.PUBLIC_URL;
+if (!publicUrl && publicUrl !== '') throw new Error('Missing PUBLIC_URL');
+
 const followers = [
   {
     id: 1,
     name: 'lighthorsechris',
-    src: `${process.env.PUBLIC_URL}/avatars/follower1.jpg`,
+    src: `${publicUrl}/avatars/follower1.jpg`,
   },
   {
     id: 2,
     name: 'stuartmoses',
-    src: `${process.env.PUBLIC_URL}/avatars/follower2.jpg`,
+    src: `${publicUrl}/avatars/follower2.jpg`,
   },
   {
     id: 3,
     name: 'darkejon',
-    src: `${process.env.PUBLIC_URL}/avatars/follower3.jpg`,
+    src: `${publicUrl}/avatars/follower3.jpg`,
   },
   {
     id: 4,
     name: 'chinyingchang',
-    src: `${process.env.PUBLIC_URL}/avatars/follower4.jpg`,
+    src: `${publicUrl}/avatars/follower4.jpg`,
   },
   {
     id: 5,
     name: 'pocketcasts ',
-    src: `${process.env.PUBLIC_URL}/avatars/follower5.jpg`,
+    src: `${publicUrl}/avatars/follower5.jpg`,
   },
   {
     id: 6,
     name: 'wearelighthouse',
-    src: `${process.env.PUBLIC_URL}/avatars/follower6.jpg`,
+    src: `${publicUrl}/avatars/follower6.jpg`,
   },
 ];
 
-export default () => (
+type UserData = {
+  id: string,
+};
+
+type Props = {
+  userData: UserData,
+};
+
+export default ({ userData }: Props) => (
   <Wrap>
     <Count>
       <Icon src={followersIcon} />
-      <CommonLink to="/EveryInteract/followers_you_follow">6 Followers you know</CommonLink>
+      <CommonLink to={`/${userData.id}/followers_you_follow`}>6 Followers you know</CommonLink>
     </Count>
     <Avatars>
       {followers.map(user => (

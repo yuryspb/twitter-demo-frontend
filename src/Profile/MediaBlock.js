@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -49,44 +50,55 @@ const ThumbnailPic = ({ to, image }) => (
   </ThumbnailLink>
 );
 
+const publicUrl = process.env.PUBLIC_URL;
+if (!publicUrl && publicUrl !== '') throw new Error('Missing PUBLIC_URL');
+
 const media = [
   {
     id: 1,
     name: 'pic2',
-    src: `${process.env.PUBLIC_URL}/media/thumbnail1.jpg`,
+    src: `${publicUrl}/media/thumbnail1.jpg`,
   },
   {
     id: 2,
     name: 'pic3',
-    src: `${process.env.PUBLIC_URL}/media/thumbnail2.jpg`,
+    src: `${publicUrl}/media/thumbnail2.jpg`,
   },
   {
     id: 3,
     name: 'pic4',
-    src: `${process.env.PUBLIC_URL}/media/thumbnail3.jpg`,
+    src: `${publicUrl}/media/thumbnail3.jpg`,
   },
   {
     id: 4,
     name: 'pic5',
-    src: `${process.env.PUBLIC_URL}/media/thumbnail4.jpg`,
+    src: `${publicUrl}/media/thumbnail4.jpg`,
   },
   {
     id: 5,
     name: 'pic6',
-    src: `${process.env.PUBLIC_URL}/media/thumbnail5.jpg`,
+    src: `${publicUrl}/media/thumbnail5.jpg`,
   },
   {
     id: 6,
     name: 'pic7',
-    src: `${process.env.PUBLIC_URL}/media/thumbnail6.jpg`,
+    src: `${publicUrl}/media/thumbnail6.jpg`,
   },
 ];
 
-export default () => (
+type UserData = {
+  id: string,
+};
+
+type Props = {
+  userData: UserData,
+};
+
+export default ({ userData }: Props) => (
   <Wrap>
     <Count>
       <Icon src={mediaIcon} />
-      <CommonLink to="/EveryInteract/media">522 Photos and videos</CommonLink>
+      <CommonLink to={`/${userData.id}/media`}>522 Photos and videos</CommonLink>
     </Count>
     <Thumbnails>
       {media.map(pic => (

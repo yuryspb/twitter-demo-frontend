@@ -1,5 +1,7 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
+import format from 'date-fns/format';
 import locationIcon from '../Ui/location-icon.svg';
 import linkIcon from '../Ui/link-icon.svg';
 import joinedIcon from '../Ui/joined-icon.svg';
@@ -89,41 +91,68 @@ const InfoLink = styled.a`
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #1d81c2;
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   cursor: pointer;
 `;
 
-export default () => (
-  <Wrap>
-    <Info>
-      <UserName>Every Interaction</UserName>
-      <VerificationIcon src={verificationIcon} />
-    </Info>
-    <Login>@EveryInteract</Login>
-    <FollowCheck>Follows you</FollowCheck>
-    <Description>
-      UX Design studio focused problem
-      <br />
-      solving creativity. Design to us is how
-      <br />
-      can we make things *work* amazing.
-    </Description>
-    <div>
+const formatDate = date => format(date, 'MMMM YYYY');
+
+type UserData = {
+  id: string,
+  display_name: string,
+  username: string,
+  note: string,
+  location: string,
+  url: string,
+  created_at: string,
+};
+
+type Props = {
+  userData: UserData,
+};
+
+function ProfileInfo({ userData }: Props) {
+  return (
+    <Wrap>
       <Info>
-        <InfoIcon src={locationIcon} />
-        <InfoText>London, UK</InfoText>
+        <UserName>{userData.display_name}</UserName>
+        <VerificationIcon src={verificationIcon} />
       </Info>
-      <Info>
-        <InfoIcon src={linkIcon} />
-        <InfoLink>everyinteraction.com</InfoLink>
-      </Info>
-      <Info>
-        <InfoIcon src={joinedIcon} />
-        <InfoText>Joined May 2008</InfoText>
-      </Info>
-    </div>
-    <ButtonBlock>
-      <MessageButton>Tweet to</MessageButton>
-      <MessageButton>Message</MessageButton>
-    </ButtonBlock>
-  </Wrap>
-);
+      <Login>@{userData.username}</Login>
+      <FollowCheck>Follows you</FollowCheck>
+      {userData.note && (
+        <Description
+          dangerouslySetInnerHTML={{
+            __html: userData.note,
+          }}
+        />
+      )}
+      <div>
+        {userData.location && (
+          <Info>
+            <InfoIcon src={locationIcon} />
+            <InfoText>{userData.location}</InfoText>
+          </Info>
+        )}
+        {userData.url && (
+          <Info>
+            <InfoIcon src={linkIcon} />
+            <InfoLink>{userData.url}</InfoLink>
+          </Info>
+        )}
+        <Info>
+          <InfoIcon src={joinedIcon} />
+          <InfoText>Joined {formatDate(userData.created_at)}</InfoText>
+        </Info>
+      </div>
+      <ButtonBlock>
+        <MessageButton>Tweet to</MessageButton>
+        <MessageButton>Message</MessageButton>
+      </ButtonBlock>
+    </Wrap>
+  );
+}
+
+export default ProfileInfo;
