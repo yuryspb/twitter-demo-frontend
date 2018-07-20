@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -80,7 +81,19 @@ const Avatar = styled.img`
   top: 290px;
 `;
 
-function ProfileNav({ userData }) {
+type UserData = {
+  id: string,
+  avatar: string,
+  statuses_count: number,
+  following_count: number,
+  followers_count: number,
+};
+
+type Props = {
+  userData: UserData,
+};
+
+function ProfileNav({ userData }: Props) {
   return (
     <Wrap>
       <div className="container">

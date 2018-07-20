@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import Preview from './TweetPreview';
@@ -81,6 +82,22 @@ const PostedImage = styled.img`
   width: 490px;
 `;
 
+type Props = {
+  avatar: string,
+  pinned: boolean,
+  name: string,
+  time: string,
+  bigFont: boolean,
+  text: string,
+  preview: Object,
+  image: Array<Object>,
+  comments: number,
+  retweets: number,
+  liked: boolean,
+  likes: number,
+  login: number,
+};
+
 const TweetPost = ({
   avatar,
   pinned,
@@ -94,9 +111,8 @@ const TweetPost = ({
   retweets,
   liked,
   likes,
-  emails,
   login,
-}) => (
+}: Props) => (
   <Wrap>
     <Avatar pinned={pinned}>
       {pinned && <Pin src={pinnedIcon} />}
@@ -119,13 +135,7 @@ const TweetPost = ({
         </Preview>
       )}
       {image && <Image>{image.map(map => <PostedImage key={map.id} src={map.url} />)}</Image>}
-      <Actions
-        comments={comments}
-        retweets={retweets}
-        liked={liked}
-        likes={likes}
-        emails={emails}
-      />
+      <Actions comments={comments} retweets={retweets} liked={liked} likes={likes} />
     </Post>
   </Wrap>
 );

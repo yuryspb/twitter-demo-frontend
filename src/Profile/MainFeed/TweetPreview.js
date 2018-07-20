@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -34,7 +35,13 @@ const Description = styled.span`
   color: black;
 `;
 
-const TweetPreview = ({ image, title, children }) => (
+type Props = {
+  image: string,
+  title: string,
+  children: string,
+};
+
+const TweetPreview = ({ image, title, children }: Props) => (
   <Wrap>
     <Image src={image} />
     <Reply>

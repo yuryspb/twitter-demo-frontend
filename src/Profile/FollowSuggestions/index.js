@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -51,26 +52,29 @@ const PeopleIcon = styled.img`
   margin-right: 5px;
 `;
 
+const publicUrl = process.env.PUBLIC_URL;
+if (!publicUrl && publicUrl !== '') throw new Error('Missing PUBLIC_URL');
+
 const users = [
   {
     id: 1,
     name: 'AppleInsider',
     login: '@appleinsider',
-    src: `${process.env.PUBLIC_URL}/avatars/profile1.png`,
+    src: `${publicUrl}/avatars/profile1.png`,
     verification: false,
   },
   {
     id: 2,
     name: 'Creode',
     login: '@Creode',
-    src: `${process.env.PUBLIC_URL}/avatars/profile2.png`,
+    src: `${publicUrl}/avatars/profile2.png`,
     verification: true,
   },
   {
     id: 3,
     name: 'Epiphany Search',
     login: '@EpiphanySearch',
-    src: `${process.env.PUBLIC_URL}/avatars/profile3.png`,
+    src: `${publicUrl}/avatars/profile3.png`,
     verification: false,
   },
 ];

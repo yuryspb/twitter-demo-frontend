@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -34,7 +35,19 @@ const HeaderLink = styled(NavLink)`
 
 const formatDate = date => distanceInWordsToNow(new Date(date));
 
-export default class Tweets extends Component {
+type UserData = {
+  id: string,
+};
+
+type Props = {
+  userData: UserData,
+};
+
+type State = {
+  posts: Array<Object>,
+};
+
+export default class Tweets extends Component<Props, State> {
   state = {
     posts: [],
   };
@@ -43,6 +56,7 @@ export default class Tweets extends Component {
     const { userData } = this.props;
     const source = 'https://twitter-demo.erodionov.ru';
     const key = process.env.REACT_APP_SECRET_CODE;
+    if (!key && key !== '') throw new Error('Missing REACT_APP_SECRET_CODE');
 
     fetch(`${source}/api/v1/accounts/${userData.id}/statuses?since_id=1&access_token=${key}`)
       .then(response => response.json())
@@ -77,7 +91,6 @@ export default class Tweets extends Component {
             comments={post.comments}
             retweets={post.reblogs_count}
             likes={post.favourites_count}
-            directmsg={post.directmsg}
             pinned={post.pinned}
             liked={post.activeLike}
             bigFont={post.sensitive}
