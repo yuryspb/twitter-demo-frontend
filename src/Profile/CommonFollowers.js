@@ -84,8 +84,12 @@ const followers = [
   },
 ];
 
+type UserData = {
+  id: string,
+};
+
 type Props = {
-  userData: Object,
+  userData: UserData,
 };
 
 export default ({ userData }: Props) => (

@@ -10,8 +10,31 @@ import FollowSuggestions from './FollowSuggestions';
 import Trends from './Trends';
 import Footer from './Footer';
 
+type UserData = {
+  id: string,
+  username: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  location: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+  error?: string,
+};
+
 type Props = {
-  userData: Object,
+  userData: UserData,
 };
 
 function Main(props: Props) {

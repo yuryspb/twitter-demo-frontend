@@ -7,8 +7,12 @@ const Background = styled.img`
   max-height: 380px;
 `;
 
+type UserData = {
+  header: string,
+};
+
 type Props = {
-  userData: Object,
+  userData: UserData,
 };
 
 function BackgroundImage({ userData }: Props) {

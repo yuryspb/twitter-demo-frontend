@@ -4,18 +4,42 @@ import Helmet from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 import Main from './Main';
 
+type UserData = {
+  id: string,
+  username: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  location: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+  error?: string,
+};
+
 type Props = {
-  userData: Object,
   match: Object,
 };
 
 type State = {
-  userData: Object,
+  userData: ?UserData,
+  error: ?Object,
 };
 
 class ProfilePage extends Component<Props, State> {
   state = {
-    userData: {},
+    userData: null,
+    error: null,
   };
 
   componentDidMount() {
@@ -37,7 +61,15 @@ class ProfilePage extends Component<Props, State> {
   }
 
   render() {
-    const { userData } = this.state;
+    const { userData, error } = this.state;
+
+    if (!userData) {
+      return <div>No userData</div>;
+    }
+
+    if (error || userData.error) {
+      return <div>Error</div>;
+    }
 
     return (
       <React.Fragment>

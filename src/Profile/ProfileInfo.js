@@ -99,8 +99,18 @@ const InfoLink = styled.a`
 
 const formatDate = date => format(date, 'MMMM YYYY');
 
+type UserData = {
+  id: string,
+  display_name: string,
+  username: string,
+  note: string,
+  location: string,
+  url: string,
+  created_at: string,
+};
+
 type Props = {
-  userData: Object,
+  userData: UserData,
 };
 
 function ProfileInfo({ userData }: Props) {
