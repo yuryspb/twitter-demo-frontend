@@ -1,10 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
-import Tweet from "./TweetPost";
-import { Link } from "../../styles";
-const tweetPreview = `${process.env.PUBLIC_URL}/media/tweet-preview.jpg`;
-const tweetPic = `${process.env.PUBLIC_URL}/media/tweet-pic.jpg`;
+// @flow
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import Tweet from './TweetPost';
 
 const Wrap = styled.div`
   width: 100%;
@@ -18,77 +17,89 @@ const Header = styled.div`
   padding-left: 16px;
 `;
 
-const HeaderLink = styled.a`
+const HeaderLink = styled(NavLink)`
   font-size: 18px;
   line-height: 21px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   text-align: center;
   font-weight: bold;
-  color: ${props => (props.active ? "#14171a" : "#1da1f2")};
+  color: ${({ active }) => (active ? '#14171a' : '#1da1f2')};
   margin-right: 34px;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    border-bottom: 1px solid #1da1f2;
+  }
 `;
 
-const TweetReply = {
-  title: "The Future of Web Fonts",
-  description:
-    "We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…",
-  link: "vilijamis.com",
-  image: tweetPreview
+const formatDate = date => distanceInWordsToNow(new Date(date));
+
+type UserData = {
+  id: string,
 };
 
-const strdate = date => distanceInWordsToNow(new Date(date));
+type Props = {
+  userData: UserData,
+};
 
-export default () => (
-  <Wrap>
-    <Header>
-      <HeaderLink active>Tweets</HeaderLink>
-      <HeaderLink>Tweets & replies</HeaderLink>
-      <HeaderLink>Media</HeaderLink>
-    </Header>
-    <Tweet
-      name="Every Interaction"
-      Login="EveryInteract"
-      time={strdate("2015, 5, 2")}
-      comments={0}
-      retweets={17}
-      likes={47}
-      directmsg
-      bigFont
-      pinned
-      liked
-      image={tweetPic}
-    >
-      We’ve made some more resources for all<br />you wonderful{" "}
-      <Link>#design</Link> folk<br />
-      <Link>everyinteraction.com/resources/</Link> <Link>#webdesign</Link>
-      <br /> <Link>#UI</Link>
-    </Tweet>
-    <Tweet
-      name="Every Interaction"
-      Login="EveryInteract"
-      time={strdate("2018, 6, 21, 23:07")}
-      comments={1}
-      retweets={4}
-      likes={2}
-      directmsg
-      bigFont
-    >
-      Our new website concept; Taking you<br />from… @ Every Interaction<br />
-      <Link href="#">instagram.com/p/BNFGrfhBP3M/</Link>
-    </Tweet>
-    <Tweet
-      name="Every Interaction"
-      Login="EveryInteract"
-      time={strdate("2017, 11, 18")}
-      comments={0}
-      retweets={0}
-      likes={0}
-      directmsg
-      bigFont={false}
-      preview={TweetReply}
-    >
-      Variable web fonts are coming, and will open a world of opportunities<br />for
-      weight use online
-    </Tweet>
-  </Wrap>
-);
+type State = {
+  posts: Array<Object>,
+};
+
+export default class Tweets extends Component<Props, State> {
+  state = {
+    posts: [],
+  };
+
+  componentDidMount() {
+    const { userData } = this.props;
+    const source = 'https://twitter-demo.erodionov.ru';
+    const key = process.env.REACT_APP_SECRET_CODE;
+    if (!key && key !== '') throw new Error('Missing REACT_APP_SECRET_CODE');
+
+    fetch(`${source}/api/v1/accounts/${userData.id}/statuses?since_id=1&access_token=${key}`)
+      .then(response => response.json())
+      .then(posts => this.setState({ posts }));
+  }
+
+  render() {
+    const { posts } = this.state;
+    const { userData } = this.props;
+
+    return (
+      <Wrap>
+        <Header>
+          <HeaderLink exact to={`/${userData.id}/`} active>
+            Tweets
+          </HeaderLink>
+          <HeaderLink exact to={`/${userData.id}/with_replies`}>
+            Tweets & replies
+          </HeaderLink>
+          <HeaderLink exact to={`/${userData.id}/media`}>
+            Media
+          </HeaderLink>
+        </Header>
+
+        {posts.map(post => (
+          <Tweet
+            key={post.id}
+            avatar={post.account.avatar}
+            name={post.account.display_name}
+            login={post.account.username}
+            time={formatDate(post.created_at)}
+            comments={post.comments}
+            retweets={post.reblogs_count}
+            likes={post.favourites_count}
+            pinned={post.pinned}
+            liked={post.activeLike}
+            bigFont={post.sensitive}
+            text={post.content}
+            image={post.media_attachments}
+            preview={post.in_reply_to_id}
+          />
+        ))}
+      </Wrap>
+    );
+  }
+}

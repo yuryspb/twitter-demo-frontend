@@ -1,15 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import FollowBtn from "../Ui/FollowButton";
-import moreIcon from "../Ui/more-icon.png";
+// @flow
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import Button from '../Ui/FollowButton';
+import moreIcon from '../Ui/more-icon.png';
 
 const Wrap = styled.div`
   background: white;
   box-shadow: 0px 2px 2px #b0b8be;
 `;
 
-const MenuBlock = styled.div`
+const Menu = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -40,7 +41,7 @@ const MenuLink = styled.span`
   text-align: center;
   font-weight: bold;
   color: #707e88;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
 `;
 
 const MenuNumber = styled.span`
@@ -48,11 +49,11 @@ const MenuNumber = styled.span`
   line-height: 21px;
   text-align: center;
   font-weight: bold;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
-  color: ${props => (props.active ? "#1da1f2" : "#788a98")};
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  color: ${({ active }) => (active ? '#1da1f2' : '#788a98')};
 `;
 
-const FollowButton = styled(FollowBtn)`
+const FollowButton = styled(Button)`
   border-radius: 100px;
   font-weight: bold;
   padding: 9px 27px;
@@ -72,39 +73,66 @@ const MoreButton = styled.button`
   cursor: pointer;
 `;
 
-export default () => (
-  <Wrap>
-    <div className="container">
-      <div className="row">
-        <div class="col-lg-offset-3 col-lg-4">
-          <MenuBlock>
-            <MenuTab to="/EveryInteract">
-              <MenuLink>Tweets</MenuLink>
-              <MenuNumber active>8,058</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/">
-              <MenuLink>Following</MenuLink>
-              <MenuNumber>721</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/">
-              <MenuLink>Followers</MenuLink>
-              <MenuNumber>1,815</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/">
-              <MenuLink>Likes</MenuLink>
-              <MenuNumber>460</MenuNumber>
-            </MenuTab>
-            <MenuTab exact to="/">
-              <MenuLink>Lists</MenuLink>
-              <MenuNumber>2</MenuNumber>
-            </MenuTab>
-          </MenuBlock>
-        </div>
-        <div className="col-lg-5 end-lg">
-          <FollowButton>Follow</FollowButton>
-          <MoreButton />
+const Avatar = styled.img`
+  position: absolute;
+  border-radius: 50%;
+  border: 6px solid white;
+  height: 210px;
+  top: 290px;
+`;
+
+type UserData = {
+  id: string,
+  avatar: string,
+  statuses_count: number,
+  following_count: number,
+  followers_count: number,
+};
+
+type Props = {
+  userData: UserData,
+};
+
+function ProfileNav({ userData }: Props) {
+  return (
+    <Wrap>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-3">
+            <Avatar src={userData.avatar} />
+          </div>
+          <div className="col-lg-4">
+            <Menu>
+              <MenuTab to="/">
+                <MenuLink>Tweets</MenuLink>
+                <MenuNumber active>{userData.statuses_count}</MenuNumber>
+              </MenuTab>
+              <MenuTab exact to={`/${userData.id}/following`}>
+                <MenuLink>Following</MenuLink>
+                <MenuNumber>{userData.following_count}</MenuNumber>
+              </MenuTab>
+              <MenuTab exact to={`/${userData.id}/followers`}>
+                <MenuLink>Followers</MenuLink>
+                <MenuNumber>{userData.followers_count}</MenuNumber>
+              </MenuTab>
+              <MenuTab exact to={`/${userData.id}/likes`}>
+                <MenuLink>Likes</MenuLink>
+                <MenuNumber>460</MenuNumber>
+              </MenuTab>
+              <MenuTab exact to={`/${userData.id}/lists`}>
+                <MenuLink>Lists</MenuLink>
+                <MenuNumber>2</MenuNumber>
+              </MenuTab>
+            </Menu>
+          </div>
+          <div className="col-lg-5 end-lg">
+            <FollowButton>Follow</FollowButton>
+            <MoreButton />
+          </div>
         </div>
       </div>
-    </div>
-  </Wrap>
-);
+    </Wrap>
+  );
+}
+
+export default ProfileNav;

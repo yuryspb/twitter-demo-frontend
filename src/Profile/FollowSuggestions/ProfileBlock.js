@@ -1,8 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import FollowBtn from "../../Ui/FollowButton";
-import verificationIcon from "../../Ui/verification-icon.svg";
-import closeIcon from "../../Ui/close-icon.svg";
+// @flow
+import React from 'react';
+import styled from 'styled-components';
+import Button from '../../Ui/FollowButton';
+import verificationIcon from '../../Ui/verification-icon.svg';
+import closeIcon from '../../Ui/close-icon.svg';
 
 const Wrap = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ const Wrap = styled.div`
 const Name = styled.span`
   font-size: 13px;
   line-height: 15px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: bold;
   color: #292f33;
   margin-right: 3px;
@@ -42,7 +43,7 @@ const Title = styled.div`
 const Login = styled.span`
   font-size: 13px;
   line-height: 15px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #657786;
   margin-left: 3px;
   overflow: hidden;
@@ -55,12 +56,12 @@ const VerificationIcon = styled.img`
   height: 16px;
 `;
 
-const FollowButton = styled(FollowBtn)`
+const FollowButton = styled(Button)`
   border-radius: 20px;
   padding: 5px 20px;
 `;
 
-const CloseBtn = styled.button`
+const CloseButton = styled.button`
   background: url(${closeIcon}) no-repeat;
   height: 8px;
   width: 8px;
@@ -68,20 +69,29 @@ const CloseBtn = styled.button`
   cursor: pointer;
 `;
 
-const ProfileBlock = props => (
+type Props = {
+  image: string,
+  name: string,
+  verification: boolean,
+  login: string,
+};
+
+const ProfileBlock = ({
+  image, name, verification, login,
+}: Props) => (
   <Wrap>
     <AvatarWrap>
-      <Avatar src={props.image} />
+      <Avatar src={image} />
     </AvatarWrap>
     <Info>
       <Title>
-        <Name>{props.name}</Name>
-        {props.verification && <VerificationIcon src={verificationIcon} />}
-        <Login>{props.login}</Login>
+        <Name>{name}</Name>
+        {verification && <VerificationIcon src={verificationIcon} />}
+        <Login>{login}</Login>
       </Title>
       <FollowButton>Follow</FollowButton>
     </Info>
-    <CloseBtn />
+    <CloseButton />
   </Wrap>
 );
 

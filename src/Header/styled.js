@@ -1,5 +1,7 @@
-import styled from "styled-components";
-import searchbarIcon from "../Ui/searchbar-icon.svg";
+// @flow
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import searchbarIcon from '../Ui/searchbar-icon.svg';
 
 export const Wrap = styled.header`
   position: fixed;
@@ -23,23 +25,15 @@ export const NavLinkBlock = styled.div`
   align-items: center;
 `;
 
-export const NavLink = styled.a`
-  font-size: 13px;
-  line-height: 15px;
-  font-weight: bold;
-  color: #667580;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
-  text-decoration: none;
-  cursor: pointer;
-`;
-
 export const NavIcon = styled.img`
   margin-right: 5px;
   cursor: pointer;
 `;
 
-export const MainIcon = styled.img`
-  margin-left: 30px;
+export const MainIcon = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 16px;
   cursor: pointer;
 `;
@@ -55,7 +49,7 @@ export const SearchInput = styled.input`
   background: #f5f8fa;
   border: 1px solid #e6ecf0;
   border-radius: 100px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   font-size: 12px;
   line-height: 14px;
   color: #687b8a;
@@ -79,11 +73,11 @@ export const Avatar = styled.img`
   margin-right: 16px;
 `;
 
-export const TweetBtn = styled.button`
+export const TweetButton = styled.button`
   text-align: center;
   line-height: 14px;
   font-size: 14px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #ffffff;
   background: #1da1f2;
   border-radius: 100px;

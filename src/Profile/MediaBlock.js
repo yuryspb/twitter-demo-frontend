@@ -1,19 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import mediaIcon from "../Ui/media-icon.svg";
-const thumbnail1 = `${process.env.PUBLIC_URL}/media/thumbnail1.jpg`;
-const thumbnail2 = `${process.env.PUBLIC_URL}/media/thumbnail2.jpg`;
-const thumbnail3 = `${process.env.PUBLIC_URL}/media/thumbnail3.jpg`;
-const thumbnail4 = `${process.env.PUBLIC_URL}/media/thumbnail4.jpg`;
-const thumbnail5 = `${process.env.PUBLIC_URL}/media/thumbnail5.jpg`;
-const thumbnail6 = `${process.env.PUBLIC_URL}/media/thumbnail6.jpg`;
+// @flow
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import mediaIcon from '../Ui/media-icon.svg';
 
 const Wrap = styled.div`
   margin-top: 30px;
 `;
 
-const CountBlock = styled.div`
+const Count = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 8px;
@@ -26,19 +21,19 @@ const Icon = styled.img`
 const CommonLink = styled(Link)`
   font-size: 14px;
   line-height: 16px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #1da1f2;
   text-decoration: none;
 `;
 
-const ThumbnailBlock = styled.div`
+const Thumbnails = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 `;
 
-const ThumbnailImg = styled.img`
+const Thumbnail = styled.img`
   width: 83px;
   height: 83px;
 `;
@@ -49,25 +44,66 @@ const ThumbnailLink = styled(Link)`
   margin-right: 5px;
 `;
 
-const Thumbnail = ({ to, image }) => (
+const ThumbnailPic = ({ to, image }) => (
   <ThumbnailLink to={to}>
-    <ThumbnailImg src={image} />
+    <Thumbnail src={image} />
   </ThumbnailLink>
 );
 
-export default () => (
+const publicUrl = process.env.PUBLIC_URL;
+if (!publicUrl && publicUrl !== '') throw new Error('Missing PUBLIC_URL');
+
+const media = [
+  {
+    id: 1,
+    name: 'pic2',
+    src: `${publicUrl}/media/thumbnail1.jpg`,
+  },
+  {
+    id: 2,
+    name: 'pic3',
+    src: `${publicUrl}/media/thumbnail2.jpg`,
+  },
+  {
+    id: 3,
+    name: 'pic4',
+    src: `${publicUrl}/media/thumbnail3.jpg`,
+  },
+  {
+    id: 4,
+    name: 'pic5',
+    src: `${publicUrl}/media/thumbnail4.jpg`,
+  },
+  {
+    id: 5,
+    name: 'pic6',
+    src: `${publicUrl}/media/thumbnail5.jpg`,
+  },
+  {
+    id: 6,
+    name: 'pic7',
+    src: `${publicUrl}/media/thumbnail6.jpg`,
+  },
+];
+
+type UserData = {
+  id: string,
+};
+
+type Props = {
+  userData: UserData,
+};
+
+export default ({ userData }: Props) => (
   <Wrap>
-    <CountBlock>
+    <Count>
       <Icon src={mediaIcon} />
-      <CommonLink to="/EveryInteract/media">522 Photos and videos</CommonLink>
-    </CountBlock>
-    <ThumbnailBlock>
-      <Thumbnail to="/pic2" image={thumbnail1} />
-      <Thumbnail to="/pic3" image={thumbnail2} />
-      <Thumbnail to="/pic4" image={thumbnail3} />
-      <Thumbnail to="/pic5" image={thumbnail4} />
-      <Thumbnail to="/pic6" image={thumbnail5} />
-      <Thumbnail to="/pic7" image={thumbnail6} />
-    </ThumbnailBlock>
+      <CommonLink to={`/${userData.id}/media`}>522 Photos and videos</CommonLink>
+    </Count>
+    <Thumbnails>
+      {media.map(pic => (
+        <ThumbnailPic key={pic.id} to={`/${pic.name}`} image={pic.src} alt={pic.name} />
+      ))}
+    </Thumbnails>
   </Wrap>
 );

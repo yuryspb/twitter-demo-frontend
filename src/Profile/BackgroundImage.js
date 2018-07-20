@@ -1,31 +1,26 @@
-import React from "react";
-import styled from "styled-components";
-const avatar = `${process.env.PUBLIC_URL}/avatars/avatar.png`;
-const backgroundImage = `${process.env.PUBLIC_URL}/media//background-image.jpg`;
+// @flow
+import React from 'react';
+import styled from 'styled-components';
 
-const Background = styled.div`
-  background: url(${backgroundImage}) no-repeat;
+const Background = styled.img`
   width: 100%;
-  min-height: 380px;
-  background-size: cover;
+  max-height: 380px;
 `;
 
-const Avatar = styled.img`
-  position: relative;
-  height: 210px;
-  top: 260px;
-`;
+type UserData = {
+  header: string,
+};
 
-export default () => (
-  <div>
-    <Background src={backgroundImage}>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-3">
-            <Avatar src={avatar} />
-          </div>
-        </div>
-      </div>
-    </Background>
-  </div>
-);
+type Props = {
+  userData: UserData,
+};
+
+function BackgroundImage({ userData }: Props) {
+  return (
+    <div>
+      <Background src={userData.header} />
+    </div>
+  );
+}
+
+export default BackgroundImage;

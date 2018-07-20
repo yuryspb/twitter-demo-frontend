@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+// @flow
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Wrap = styled.div`
   background: white;
@@ -20,7 +21,7 @@ const Title = styled.div`
 const Header = styled.h2`
   font-size: 17px;
   line-height: 21px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #292f33;
   margin: 0px;
 `;
@@ -35,7 +36,7 @@ const Dot = styled.span`
 const HeaderLink = styled(Link)`
   font-size: 12px;
   line-height: 14px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #1da1f2;
   text-decoration: none;
 `;
@@ -48,7 +49,7 @@ const TrendLink = styled(Link)`
   font-size: 15px;
   line-height: 20px;
   font-weight: bold;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #1da1f2;
   text-decoration: none;
   &:hover {
@@ -59,21 +60,66 @@ const TrendLink = styled(Link)`
 const TrendCount = styled.div`
   font-size: 12px;
   line-height: 20px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #718290;
 `;
 
-const Trend = ({ to, count, children, span }) => (
+const Trend = ({
+  link, count, text, counttext,
+}) => (
   <TrendWrap>
-    <TrendLink to={to}>{children}</TrendLink>
-    {count && (
-      <TrendCount>
-        {count}
-        {span}
-      </TrendCount>
-    )}
+    <TrendLink to={link}>{text}</TrendLink>
+    <TrendCount>
+      {count}
+      {counttext}
+    </TrendCount>
   </TrendWrap>
 );
+
+const trends = [
+  {
+    id: 1,
+    link: 'hashtag/BringYourDogToWorkDay',
+    text: '#BringYourDogToWorkDay',
+    count: null,
+    counttext: null,
+  },
+  {
+    id: 2,
+    link: 'hashtag/FridayFeeling',
+    text: '#FridayFeeling',
+    count: 12100,
+    counttext: ' Tweets',
+  },
+  {
+    id: 3,
+    link: 'hashtag/BrexitAnniversary',
+    text: '#BrexitAnniversary',
+    count: null,
+    counttext: 'It’s one year since the UK voted to leave the European Union',
+  },
+  {
+    id: 4,
+    link: 'search?q=HMSQueenElizabeth',
+    text: 'HMS Queen Elizabeth',
+    count: 1036,
+    counttext: ' Tweets',
+  },
+  {
+    id: 5,
+    link: 'search?q=JoeBudden',
+    text: 'Joe Budden',
+    count: 1036,
+    counttext: ' Tweets',
+  },
+  {
+    id: 6,
+    link: 'search?q=Trident',
+    text: 'Trident',
+    count: 6136,
+    counttext: ' Tweets',
+  },
+];
 
 export default () => (
   <Wrap>
@@ -82,24 +128,14 @@ export default () => (
       <Dot>•</Dot>
       <HeaderLink to="/change">Change</HeaderLink>
     </Title>
-    <Trend to="/hashtag/BringYourDogToWorkDay">#BringYourDogToWorkDay</Trend>
-    <Trend to="/hashtag/FridayFeeling" count={12100} span=" Tweets">
-      #FridayFeeling
-    </Trend>
-    <Trend
-      to="/hashtag/BrexitAnniversary"
-      count="It’s one year since the UK voted to leave the European Union"
-    >
-      #BrexitAnniversary
-    </Trend>
-    <Trend to="/search?q=HMSQueenElizabeth" count={1036} span=" Tweets">
-      HMS Queen Elizabeth
-    </Trend>
-    <Trend to="/search?q=JoeBudden" count={1036} span=" Tweets">
-      Joe Budden
-    </Trend>
-    <Trend to="/search?q=Trident" count={6136} span=" Tweets">
-      Trident
-    </Trend>
+    {trends.map(trendblock => (
+      <Trend
+        key={trendblock.id}
+        link={`/${trendblock.link}`}
+        text={trendblock.text}
+        count={trendblock.count}
+        counttext={trendblock.counttext}
+      />
+    ))}
   </Wrap>
 );

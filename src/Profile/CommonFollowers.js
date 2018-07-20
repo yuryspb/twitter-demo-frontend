@@ -1,19 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import followersIcon from "../Ui/followers-icon.svg";
-const followerImg1 = `${process.env.PUBLIC_URL}/avatars/follower1.jpg`;
-const followerImg2 = `${process.env.PUBLIC_URL}/avatars/follower2.jpg`;
-const followerImg3 = `${process.env.PUBLIC_URL}/avatars/follower3.jpg`;
-const followerImg4 = `${process.env.PUBLIC_URL}/avatars/follower4.jpg`;
-const followerImg5 = `${process.env.PUBLIC_URL}/avatars/follower5.jpg`;
-const followerImg6 = `${process.env.PUBLIC_URL}/avatars/follower6.jpg`;
+// @flow
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import followersIcon from '../Ui/followers-icon.svg';
 
 const Wrap = styled.div`
   margin-top: 20px;
 `;
 
-const CountBlock = styled.div`
+const Count = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 8px;
@@ -26,12 +21,12 @@ const Icon = styled.img`
 const CommonLink = styled(Link)`
   font-size: 14px;
   line-height: 16px;
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   color: #1da1f2;
   text-decoration: none;
 `;
 
-const AvatarBlock = styled.div`
+const Avatars = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -49,27 +44,68 @@ const AvatarLink = styled(Link)`
   margin-right: 5px;
 `;
 
-const Follower = ({ to, image }) => (
-  <AvatarLink to={to}>
-    <Avatar src={image} />
-  </AvatarLink>
-);
+const Follower = styled.li`
+  list-style: none;
+`;
 
-export default () => (
+const publicUrl = process.env.PUBLIC_URL;
+if (!publicUrl && publicUrl !== '') throw new Error('Missing PUBLIC_URL');
+
+const followers = [
+  {
+    id: 1,
+    name: 'lighthorsechris',
+    src: `${publicUrl}/avatars/follower1.jpg`,
+  },
+  {
+    id: 2,
+    name: 'stuartmoses',
+    src: `${publicUrl}/avatars/follower2.jpg`,
+  },
+  {
+    id: 3,
+    name: 'darkejon',
+    src: `${publicUrl}/avatars/follower3.jpg`,
+  },
+  {
+    id: 4,
+    name: 'chinyingchang',
+    src: `${publicUrl}/avatars/follower4.jpg`,
+  },
+  {
+    id: 5,
+    name: 'pocketcasts ',
+    src: `${publicUrl}/avatars/follower5.jpg`,
+  },
+  {
+    id: 6,
+    name: 'wearelighthouse',
+    src: `${publicUrl}/avatars/follower6.jpg`,
+  },
+];
+
+type UserData = {
+  id: string,
+};
+
+type Props = {
+  userData: UserData,
+};
+
+export default ({ userData }: Props) => (
   <Wrap>
-    <CountBlock>
+    <Count>
       <Icon src={followersIcon} />
-      <CommonLink to="/EveryInteract/followers_you_follow">
-        6 Followers you know
-      </CommonLink>
-    </CountBlock>
-    <AvatarBlock>
-      <Follower to="/profile2" image={followerImg1} />
-      <Follower to="/profile3" image={followerImg2} />
-      <Follower to="/profile4" image={followerImg3} />
-      <Follower to="/profile5" image={followerImg4} />
-      <Follower to="/profile6" image={followerImg5} />
-      <Follower to="/profile7" image={followerImg6} />
-    </AvatarBlock>
+      <CommonLink to={`/${userData.id}/followers_you_follow`}>6 Followers you know</CommonLink>
+    </Count>
+    <Avatars>
+      {followers.map(user => (
+        <Follower key={user.id}>
+          <AvatarLink to={`/${user.name}`}>
+            <Avatar src={user.src} alt={user.name} />
+          </AvatarLink>
+        </Follower>
+      ))}
+    </Avatars>
   </Wrap>
 );
