@@ -107,7 +107,7 @@ class Tweets extends React.Component<Props, State> {
 }
 
 const mapStateToProps = state => ({
-  userInfo: state.userInfo,
+  userData: state.userInfo,
 });
 
 const mapDispatchToProps = dispatch => ({
