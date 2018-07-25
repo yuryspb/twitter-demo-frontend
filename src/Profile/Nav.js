@@ -2,6 +2,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import userInfoFetchData from '../complexes/actions';
 import Button from '../Ui/FollowButton';
 import moreIcon from '../Ui/more-icon.png';
 
@@ -93,46 +95,55 @@ type Props = {
   userData: UserData,
 };
 
-function ProfileNav({ userData }: Props) {
-  return (
-    <Wrap>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-3">
-            <Avatar src={userData.avatar} />
-          </div>
-          <div className="col-lg-4">
-            <Menu>
-              <MenuTab to="/">
-                <MenuLink>Tweets</MenuLink>
-                <MenuNumber active>{userData.statuses_count}</MenuNumber>
-              </MenuTab>
-              <MenuTab exact to={`/${userData.id}/following`}>
-                <MenuLink>Following</MenuLink>
-                <MenuNumber>{userData.following_count}</MenuNumber>
-              </MenuTab>
-              <MenuTab exact to={`/${userData.id}/followers`}>
-                <MenuLink>Followers</MenuLink>
-                <MenuNumber>{userData.followers_count}</MenuNumber>
-              </MenuTab>
-              <MenuTab exact to={`/${userData.id}/likes`}>
-                <MenuLink>Likes</MenuLink>
-                <MenuNumber>460</MenuNumber>
-              </MenuTab>
-              <MenuTab exact to={`/${userData.id}/lists`}>
-                <MenuLink>Lists</MenuLink>
-                <MenuNumber>2</MenuNumber>
-              </MenuTab>
-            </Menu>
-          </div>
-          <div className="col-lg-5 end-lg">
-            <FollowButton>Follow</FollowButton>
-            <MoreButton />
-          </div>
+const ProfileNav = ({ userData }: Props) => (
+  <Wrap>
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-3">
+          <Avatar src={userData.avatar} />
+        </div>
+        <div className="col-lg-4">
+          <Menu>
+            <MenuTab to="/">
+              <MenuLink>Tweets</MenuLink>
+              <MenuNumber active>{userData.statuses_count}</MenuNumber>
+            </MenuTab>
+            <MenuTab exact to={`/${userData.id}/following`}>
+              <MenuLink>Following</MenuLink>
+              <MenuNumber>{userData.following_count}</MenuNumber>
+            </MenuTab>
+            <MenuTab exact to={`/${userData.id}/followers`}>
+              <MenuLink>Followers</MenuLink>
+              <MenuNumber>{userData.followers_count}</MenuNumber>
+            </MenuTab>
+            <MenuTab exact to={`/${userData.id}/likes`}>
+              <MenuLink>Likes</MenuLink>
+              <MenuNumber>460</MenuNumber>
+            </MenuTab>
+            <MenuTab exact to={`/${userData.id}/lists`}>
+              <MenuLink>Lists</MenuLink>
+              <MenuNumber>2</MenuNumber>
+            </MenuTab>
+          </Menu>
+        </div>
+        <div className="col-lg-5 end-lg">
+          <FollowButton>Follow</FollowButton>
+          <MoreButton />
         </div>
       </div>
-    </Wrap>
-  );
-}
+    </div>
+  </Wrap>
+);
 
-export default ProfileNav;
+const mapStateToProps = state => ({
+  userData: state.userInfo,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ProfileNav);
