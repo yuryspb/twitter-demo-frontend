@@ -1,8 +1,10 @@
 // @flow
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import userInfoFetchData from '../../complexes/actions';
 import Tweet from './TweetPost';
 
 const Wrap = styled.div`
@@ -47,7 +49,7 @@ type State = {
   posts: Array<Object>,
 };
 
-export default class Tweets extends Component<Props, State> {
+class Tweets extends React.Component<Props, State> {
   state = {
     posts: [],
   };
@@ -103,3 +105,16 @@ export default class Tweets extends Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Tweets);
