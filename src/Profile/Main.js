@@ -28,8 +28,8 @@ type UserData = {
   followers_count: number,
   following_count: number,
   statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
+  emojis: Object,
+  fields: Object,
   error?: string,
 };
 

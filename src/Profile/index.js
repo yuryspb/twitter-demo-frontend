@@ -1,8 +1,13 @@
 // @flow
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import userInfoFetchData from './actions';
 import Main from './Main';
+
+const Info = styled.div``;
 
 type UserData = {
   id: string,
@@ -22,13 +27,15 @@ type UserData = {
   followers_count: number,
   following_count: number,
   statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
+  emojis: Object,
+  fields: Object,
   error?: string,
 };
 
 type Props = {
   match: Object,
+  dispatch: Function,
+  userData: Object,
 };
 
 type State = {
@@ -37,38 +44,26 @@ type State = {
 };
 
 class ProfilePage extends Component<Props, State> {
-  state = {
-    userData: null,
-    error: null,
-  };
-
   componentDidMount() {
     const {
       match: {
         params: { id },
       },
+      dispatch,
     } = this.props;
 
-    const source = 'https://twitter-demo.erodionov.ru';
-    const key = process.env.REACT_APP_SECRET_CODE;
-    if (!key && key !== '') throw new Error('Missing REACT_APP_SECRET_CODE');
-
-    fetch(`${source}/api/v1/accounts/${id}?access_token=${key}`)
-      .then(res => res.json())
-      .then((userData) => {
-        this.setState({ userData });
-      });
+    dispatch(userInfoFetchData(id));
   }
 
   render() {
-    const { userData, error } = this.state;
+    const { userData } = this.props;
 
     if (!userData) {
-      return <div>No userData</div>;
+      return <Info>Sorry, that page doesn’t exist! 1</Info>;
     }
 
-    if (error || userData.error) {
-      return <div>Error</div>;
+    if (userData && userData.error) {
+      return <Info>Sorry, that page doesn’t exist! 2</Info>;
     }
 
     return (
@@ -85,4 +80,8 @@ class ProfilePage extends Component<Props, State> {
   }
 }
 
-export default ProfilePage;
+const mapStateToProps = state => ({
+  userData: state.userInfo,
+});
+
+export default connect(mapStateToProps)(ProfilePage);

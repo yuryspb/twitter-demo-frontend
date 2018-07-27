@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import format from 'date-fns/format';
+import { connect } from 'react-redux';
 import locationIcon from '../Ui/location-icon.svg';
 import linkIcon from '../Ui/link-icon.svg';
 import joinedIcon from '../Ui/joined-icon.svg';
@@ -113,46 +114,48 @@ type Props = {
   userData: UserData,
 };
 
-function ProfileInfo({ userData }: Props) {
-  return (
-    <Wrap>
-      <Info>
-        <UserName>{userData.display_name}</UserName>
-        <VerificationIcon src={verificationIcon} />
-      </Info>
-      <Login>@{userData.username}</Login>
-      <FollowCheck>Follows you</FollowCheck>
-      {userData.note && (
-        <Description
-          dangerouslySetInnerHTML={{
-            __html: userData.note,
-          }}
-        />
-      )}
-      <div>
-        {userData.location && (
-          <Info>
-            <InfoIcon src={locationIcon} />
-            <InfoText>{userData.location}</InfoText>
-          </Info>
-        )}
-        {userData.url && (
-          <Info>
-            <InfoIcon src={linkIcon} />
-            <InfoLink>{userData.url}</InfoLink>
-          </Info>
-        )}
+const ProfileInfo = ({ userData }: Props) => (
+  <Wrap>
+    <Info>
+      <UserName>{userData.display_name}</UserName>
+      <VerificationIcon src={verificationIcon} />
+    </Info>
+    <Login>@{userData.username}</Login>
+    <FollowCheck>Follows you</FollowCheck>
+    {userData.note && (
+      <Description
+        dangerouslySetInnerHTML={{
+          __html: userData.note,
+        }}
+      />
+    )}
+    <div>
+      {userData.location && (
         <Info>
-          <InfoIcon src={joinedIcon} />
-          <InfoText>Joined {formatDate(userData.created_at)}</InfoText>
+          <InfoIcon src={locationIcon} />
+          <InfoText>{userData.location}</InfoText>
         </Info>
-      </div>
-      <ButtonBlock>
-        <MessageButton>Tweet to</MessageButton>
-        <MessageButton>Message</MessageButton>
-      </ButtonBlock>
-    </Wrap>
-  );
-}
+      )}
+      {userData.url && (
+        <Info>
+          <InfoIcon src={linkIcon} />
+          <InfoLink>{userData.url}</InfoLink>
+        </Info>
+      )}
+      <Info>
+        <InfoIcon src={joinedIcon} />
+        <InfoText>Joined {formatDate(userData.created_at)}</InfoText>
+      </Info>
+    </div>
+    <ButtonBlock>
+      <MessageButton>Tweet to</MessageButton>
+      <MessageButton>Message</MessageButton>
+    </ButtonBlock>
+  </Wrap>
+);
 
-export default ProfileInfo;
+const mapStateToProps = state => ({
+  userData: state.userInfo,
+});
+
+export default connect(mapStateToProps)(ProfileInfo);
