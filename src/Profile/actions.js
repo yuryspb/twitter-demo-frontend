@@ -5,9 +5,13 @@ function fetchUserInfo(userInfo) {
   };
 }
 
-export default function userInfoFetchData(url) {
+const source = 'https://twitter-demo.erodionov.ru';
+const key = process.env.REACT_APP_SECRET_CODE;
+if (!key && key !== '') throw new Error('Missing REACT_APP_SECRET_CODE');
+
+export default function userInfoFetchData(id) {
   return (dispatch) => {
-    fetch(url)
+    fetch(`${source}/api/v1/accounts/${id}?access_token=${key}`)
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);

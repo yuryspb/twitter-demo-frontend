@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import userInfoFetchData from '../complexes/actions';
 import Button from '../Ui/FollowButton';
 import moreIcon from '../Ui/more-icon.png';
 
@@ -139,11 +138,4 @@ const mapStateToProps = state => ({
   userData: state.userInfo,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ProfileNav);
+export default connect(mapStateToProps)(ProfileNav);

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
-import userInfoFetchData from '../../complexes/actions';
 import Tweet from './TweetPost';
 
 const Wrap = styled.div`
@@ -110,11 +109,4 @@ const mapStateToProps = state => ({
   userData: state.userInfo,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Tweets);
+export default connect(mapStateToProps)(Tweets);

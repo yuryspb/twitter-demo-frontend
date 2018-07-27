@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import format from 'date-fns/format';
 import { connect } from 'react-redux';
-import userInfoFetchData from '../complexes/actions';
 import locationIcon from '../Ui/location-icon.svg';
 import linkIcon from '../Ui/link-icon.svg';
 import joinedIcon from '../Ui/joined-icon.svg';
@@ -159,11 +158,4 @@ const mapStateToProps = state => ({
   userData: state.userInfo,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ProfileInfo);
+export default connect(mapStateToProps)(ProfileInfo);

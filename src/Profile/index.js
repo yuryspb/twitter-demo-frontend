@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import userInfoFetchData from '../complexes/actions';
+import userInfoFetchData from './actions';
 import Main from './Main';
 
 const Info = styled.div``;
@@ -34,7 +34,7 @@ type UserData = {
 
 type Props = {
   match: Object,
-  fetchUserInfo: Function,
+  dispatch: Function,
   userData: Object,
 };
 
@@ -49,14 +49,10 @@ class ProfilePage extends Component<Props, State> {
       match: {
         params: { id },
       },
-      fetchUserInfo,
+      dispatch,
     } = this.props;
 
-    const source = 'https://twitter-demo.erodionov.ru';
-    const key = process.env.REACT_APP_SECRET_CODE;
-    if (!key && key !== '') throw new Error('Missing REACT_APP_SECRET_CODE');
-
-    fetchUserInfo(`${source}/api/v1/accounts/${id}?access_token=${key}`);
+    dispatch(userInfoFetchData(id));
   }
 
   render() {
@@ -88,11 +84,4 @@ const mapStateToProps = state => ({
   userData: state.userInfo,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ProfilePage);
+export default connect(mapStateToProps)(ProfilePage);
